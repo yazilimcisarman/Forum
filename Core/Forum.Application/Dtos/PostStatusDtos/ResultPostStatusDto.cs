@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Forum.Application.Dtos.PoststatusDtos
+namespace Forum.Application.Dtos.PostStatusDtos
 {
     public class ResultPostStatusDto
     {

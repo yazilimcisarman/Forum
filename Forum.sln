@@ -21,6 +21,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forum.Persistence", "Infrastructure\Forum.Persistence\Forum.Persistence.csproj", "{88D5865A-0ECF-4484-990E-80D240F58B66}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Documents", "Documents", "{D67A91E1-6662-4CD8-B54C-0F29A84C940D}"
+	ProjectSection(SolutionItems) = preProject
+		sqlUserTrigger.txt = sqlUserTrigger.txt
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

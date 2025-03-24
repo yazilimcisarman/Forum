@@ -1,0 +1,23 @@
+User register oldugunda Aspnetusers tablosuna insert islem igerceklstiginde users tablosuna bilgleri otomantik yazam trigger
+
+
+
+
+CREATE TRIGGER trg_AfterUserInsert
+ON AspNetUsers
+FOR INSERT
+AS
+BEGIN
+    -- Yeni eklenen kullanýcýnýn bilgilerini alýn
+    DECLARE @UserId NVARCHAR(450), @Username NVARCHAR(256), @Email NVARCHAR(256);
+
+    SELECT 
+        @UserId = i.Id,
+        @Username = i.UserName,
+        @Email = i.Email
+    FROM inserted i;
+
+    -- Users tablosuna ekleme yap
+    INSERT INTO Users (UserIdentityId, Username, Email)
+    VALUES (@UserId, @Username, @Email);
+END;

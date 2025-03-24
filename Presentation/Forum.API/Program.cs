@@ -24,6 +24,7 @@ builder.Services.AddScoped<SignInManager<ForumIdentityUser>>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
+builder.Services.AddScoped<IPostStatusServices, PostStatusServices>();
 
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
