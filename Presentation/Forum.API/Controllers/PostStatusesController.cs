@@ -2,6 +2,7 @@
 using Forum.Application.Interfaces.Services;
 using Forum.Application.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.API.Controllers
@@ -19,44 +20,55 @@ namespace Forum.API.Controllers
         [HttpGet("getAllPostStatus")]
         public async Task<IActionResult> GetAllPostStatus()
         {
-            var result = await _postStatusServices.GetAllPostStatusAsync();
-            return Ok(result);  
+            var result = await _postStatusServices.GetAllPostStatus();
+            if (result.Status) 
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);  
         }
         [HttpGet("getPostStatusById/{id}")]
         public async Task<IActionResult> GetPostStatusById(int id)
         {
-            var result = await _postStatusServices.GetPostStatusByIdAsync(id);
-            if (result == null)
-                return NotFound("PostStatus bulunamadı.");
-
-            return Ok(result);
+            var result = await _postStatusServices.GetByIdPostStatus(id);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpPost("createPostStatus")]
         public async Task<IActionResult> CreatePostStatus([FromBody] CreatePostStatusDto postStatusDto)
         {
-            if (postStatusDto == null || string.IsNullOrWhiteSpace(postStatusDto.Name))
-                return BadRequest("Geçersiz veri.");
-
-            await _postStatusServices.CreatePostStatusAsync(postStatusDto);
-            return Ok("PostStatus başarıyla oluşturuldu.");
+            var result = await _postStatusServices.CreatePostStatus(postStatusDto);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpPut("updatePostStatus")]
         public async Task<IActionResult> UpdatePostStatus([FromBody] UpdatePostStatusDto postStatusDto)
         {
-            if (postStatusDto == null || postStatusDto.Id <= 0 || string.IsNullOrWhiteSpace(postStatusDto.Name))
-                return BadRequest("Geçersiz veri.");
-
-            await _postStatusServices.UpdatePostStatusAsync(postStatusDto);
-            return Ok("PostStatus başarıyla güncellendi.");
+            var result = await _postStatusServices.UpdatePostStatus(postStatusDto);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         [HttpDelete("deletePostStatus/{id}")]
         public async Task<IActionResult> DeletePostStatus(int id)
         {
-            await _postStatusServices.DeletePostStatusAsync(id);
-            return Ok("PostStatus başarıyla silindi.");
+            var result= await _postStatusServices.DeletePostStatus(id);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }

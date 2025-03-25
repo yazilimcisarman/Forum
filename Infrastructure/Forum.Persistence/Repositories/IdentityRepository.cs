@@ -1,4 +1,5 @@
-﻿using Forum.Application.Interfaces.Repositories;
+﻿using Forum.Application.Dtos.IdentityDtos;
+using Forum.Application.Interfaces.Repositories;
 using Forum.Domain.Entities;
 using Forum.Persistence.Context.Identity;
 using Microsoft.AspNetCore.Identity;
@@ -101,6 +102,58 @@ namespace Forum.Persistence.Repositories
         public Task<(bool success, string message)> UpdateUserAsync(User user)
         {
             throw new NotImplementedException();
+        }
+
+        public async Task<string> LoginAsync(LoginDto dto)
+        {
+            var user = await _userManager.FindByEmailAsync(dto.Email);
+            if(user == null)
+            {
+                return "Kullanici Bulunamadi.";
+            }
+            var result = await _signInManager.PasswordSignInAsync(user, dto.Password, true, false);
+            if (result.Succeeded)
+            {
+                return "Giriş Başarılı";
+            }
+            if (result.IsLockedOut)
+            {
+                return "Kullanıcı hesabı kilitli";
+            }
+            if (result.IsNotAllowed)
+            {
+                return "Giriş izni yok.";
+            }
+            if (result.RequiresTwoFactor)
+            {
+                return "İki faktörlü doğrulama gerekli.";
+            }
+            return "Geçersiz giriş denemesi.";
+        }
+        public async Task<string> RegisterAsync(RegisterDto dto)
+        {
+            if(dto.Password != dto.RePassword)
+            {
+                return "Şifreler Uyumsuz.";
+            }
+            var user = new ForumIdentityUser
+            {
+                Email = dto.Email,
+                Name = dto.Name,
+                Surname = dto.Surname,
+                PhoneNumber = dto.PhoneNumber,
+            };
+            var result = await _userManager.CreateAsync(user,dto.Password);
+            if (result.Succeeded)
+            {
+                return "Kayıt Başarılı";
+            }
+            return result.Errors.ToString();
+        }
+
+        public async Task LogOutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
     }
 }

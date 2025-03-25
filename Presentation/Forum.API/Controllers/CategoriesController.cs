@@ -1,6 +1,8 @@
 ﻿using Forum.Application.Dtos.CategoryDtos;
+using Forum.Application.Dtos.ResponseDtos;
 using Forum.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.API.Controllers
@@ -18,32 +20,48 @@ namespace Forum.API.Controllers
         [HttpGet("GetAllCategory")]
         public async Task<IActionResult> GetAllCategory()
         {
-            var result = await _categoryServices.GetAllCategoriesAsync();
-            return Ok(result);  
+                var result = await _categoryServices.GetAllCategories();
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
         [HttpPost("CreateCategory")]
         public async Task<IActionResult> CreateCategory(CreateCategoryDto dto)
         {
-            await _categoryServices.CreateCategoryAsync(dto);
-            return Ok("Kategori Olusturuldu.");
+            var result = await _categoryServices.CreateCategory(dto);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
         [HttpPut("UpdateCategory")]
         public async Task<IActionResult> UpdateCategory(UpdateCategoryDto dto)
         {
-            await _categoryServices.UpdateCategoryAsync(dto);
-            return Ok("Kategori Guncellendi");
+            var result = await _categoryServices.UpdateCategory(dto);
+            if(result.Status)
+                return Ok(result);
+            return BadRequest(result);
         }
         [HttpGet("GetByIdCategory")]
         public async Task<IActionResult> GetByIdCategory(int id)
         {
-            var result = await _categoryServices.GetCategoryByIdAsync(id);
-            return Ok(result);
+            var result = await _categoryServices.GetCategoryById(id);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
         [HttpDelete("DeleteCategory")]
         public async Task<IActionResult> DeleteCategory(int id)
         {
-            await _categoryServices.DeleteCategoryAsync(id);
-            return Ok("Kategori silindi.");
+            var result = await _categoryServices.DeleteCategory(id);
+            if (result.Status)
+                return Ok(result);
+            return BadRequest(result);
         }
     }
 }

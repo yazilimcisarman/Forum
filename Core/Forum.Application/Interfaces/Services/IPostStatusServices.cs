@@ -1,5 +1,6 @@
 ﻿using Forum.Application.Dtos.CategoryDtos;
 using Forum.Application.Dtos.PostStatusDtos;
+using Forum.Application.Dtos.ResponseDtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,10 +11,10 @@ namespace Forum.Application.Interfaces.Services
 {
     public interface IPostStatusServices
     {
-        Task<List<ResultPostStatusDto>> GetAllPostStatusAsync(); 
-        Task<GetByIdPostStatusDto> GetPostStatusByIdAsync(int PostStatusId); 
-        Task CreatePostStatusAsync(CreatePostStatusDto PostStatus); 
-        Task UpdatePostStatusAsync(UpdatePostStatusDto PostStatus); 
-        Task DeletePostStatusAsync(int PostStatusId); 
+        Task<ApiResponse<List<ResultPostStatusDto>>> GetAllPostStatus(); 
+        Task<ApiResponse<GetByIdPostStatusDto>> GetByIdPostStatus(int PostStatusId); 
+        Task<ApiResponse<object>> CreatePostStatus(CreatePostStatusDto PostStatus); 
+        Task<ApiResponse<object>> UpdatePostStatus(UpdatePostStatusDto PostStatus); 
+        Task<ApiResponse<object>> DeletePostStatus(int PostStatusId); 
     }
 }
