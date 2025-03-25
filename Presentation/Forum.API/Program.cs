@@ -25,6 +25,7 @@ builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepositor
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<IPostStatusServices, PostStatusServices>();
+builder.Services.AddScoped<IUserServices, UserServices>();
 
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
