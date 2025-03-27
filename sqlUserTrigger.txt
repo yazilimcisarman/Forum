@@ -21,3 +21,34 @@ BEGIN
     INSERT INTO Users (UserIdentityId, Username, Email)
     VALUES (@UserId, @Username, @Email);
 END;
+
+
+
+--update trgigger 
+USE [ForumDbContext]
+GO
+/****** Object:  Trigger [dbo].[trg_AfterUserInsert]    Script Date: 28.03.2025 01:04:50 ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER TRIGGER [dbo].[trg_AfterUserInsert]
+ON [dbo].[AspNetUsers]
+FOR INSERT
+AS
+BEGIN
+    -- Yeni eklenen kullanýcýnýn bilgilerini alýn
+    DECLARE @UserId NVARCHAR(450), @Username NVARCHAR(256), @Email NVARCHAR(256), @registerDate Datetime, @canpost bit;
+
+    SELECT 
+        @UserId = i.Id,
+        @Username = i.UserName,
+        @Email = i.Email,
+		@registerDate = GetDate(),
+		@canpost = 1
+    FROM inserted i;
+
+    -- Users tablosuna ekleme yap
+    INSERT INTO Users (UserIdentityId, Username, Email,RegisteredAt,CanPost)
+    VALUES (@UserId, @Username, @Email,@registerDate,@canpost);
+END;

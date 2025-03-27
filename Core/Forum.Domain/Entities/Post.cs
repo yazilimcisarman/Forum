@@ -14,9 +14,8 @@ namespace Forum.Domain.Entities
         public string Content { get; set; } // İçerik
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public int UserId { get; set; }
-        public string Username { get; set; } // Kullanıcı adı ile eşleşecek
         public int CategoryId { get; set; } // Kategoriye bağlı
-        public int StatusId { get; set; } // Post durumu (Gönderildi, Hazır, Yayınlandı vb.)
+        public int StatusId { get; set; } = 1; // Post durumu (Gönderildi, Hazır, Yayınlandı vb.)
         public DateTime? ModifiedAt { get; set; }
         public bool IsDeleted { get; set; } = false;
         public DateTime? DeletedAt { get; set; }

@@ -154,5 +154,43 @@ namespace Forum.Application.Services
             }
            
         }
+
+        public async Task<ApiResponse<object>> IncreasePostCount(int categoryId)
+        {
+            try
+            {
+                var category = await _categoryRepository.GetByIdAsync(categoryId);
+                if (category == null)
+                {
+                    return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = "Kategori Bulunamadi" };
+                }
+                category.PostCount += 1;
+                await _categoryRepository.UpdateAsync(category);
+                return new ApiResponse<object> { Status = true, Data = null };
+            }
+            catch (Exception ex )
+            {
+                return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        public async Task<ApiResponse<object>> DecreasePostCount(int categoryId)
+        {
+            try
+            {
+                var category = await _categoryRepository.GetByIdAsync(categoryId);
+                if (category == null)
+                {
+                    return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = "Kategori Bulunamadi" };
+                }
+                category.PostCount -= 1;
+                await _categoryRepository.UpdateAsync(category);
+                return new ApiResponse<object> { Status = true, Data = null };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
     }
 }

@@ -2,10 +2,13 @@ using FluentValidation;
 using Forum.Application.Dtos.CategoryDtos;
 using Forum.Application.Interfaces.Repositories;
 using Forum.Application.Interfaces.Services;
+using Forum.Application.Mappings;
 using Forum.Application.Services;
 using Forum.Application.Validators;
 using Forum.Application.Validators.CategoryValidators;
 using Forum.Application.Validators.PostStatuesValidators;
+using Forum.Application.Validators.PostValidators;
+using Forum.Application.Validators.UserValidators;
 using Forum.Persistence.Context;
 using Forum.Persistence.Context.Identity;
 using Forum.Persistence.Repositories;
@@ -31,11 +34,18 @@ builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<IPostStatusServices, PostStatusServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();
+builder.Services.AddScoped<IAccountServices, AccountServices>();
+builder.Services.AddScoped<IPostServices, PostServices>();
 
 
 builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<UpdateCategoryDtoValidator>();
 builder.Services.AddValidatorsFromAssemblyContaining<CreatePostStatusDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserDtoValidator>();
+builder.Services.AddValidatorsFromAssemblyContaining<CreatePostDtoValidator>();
+
+builder.Services.AddAutoMapper(typeof(GeneralMapping));
 
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();

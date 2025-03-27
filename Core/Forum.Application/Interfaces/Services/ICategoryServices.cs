@@ -16,5 +16,7 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<object>> CreateCategory(CreateCategoryDto category); // Kategori oluştur
         Task<ApiResponse<object>> UpdateCategory(UpdateCategoryDto category); // Kategori güncelle
         Task<ApiResponse<object>> DeleteCategory(int categoryId); // Kategori sil
+        Task<ApiResponse<object>> IncreasePostCount(int categoryId);
+        Task<ApiResponse<object>> DecreasePostCount(int categoryId);
     }
 }

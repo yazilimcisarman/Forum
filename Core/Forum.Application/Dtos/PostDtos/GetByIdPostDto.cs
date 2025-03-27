@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Forum.Application.Dtos.PostDtos
 {
+    //burada getbyid yerine postdetaildto olarak olsutur, dtolarda fiil eylemi olmasin get vb
     public class GetByIdPostDto
     {
         public int Id { get; set; }

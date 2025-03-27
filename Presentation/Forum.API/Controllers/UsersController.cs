@@ -1,6 +1,7 @@
 ﻿using Forum.Application.Dtos.UserDtos;
 using Forum.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.API.Controllers
@@ -17,63 +18,63 @@ namespace Forum.API.Controllers
         }
 
         // Get All Users
-        [HttpGet]
+        [HttpGet("GetAllUsers")]
         public async Task<IActionResult> GetAllUsers()
         {
-            var users = await _userServices.GetAllUsers();
-            return Ok(users);
+            var result = await _userServices.GetAllUsers();
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
 
         // Get User by Id
-        [HttpGet("{id}")]
+        [HttpGet("GetUserById")]
         public async Task<IActionResult> GetUserById(int id)
         {
-            var user = await _userServices.GetByIdUser(id);
-            if (user == null)
+            var result = await _userServices.GetByIdUser(id);
+            if (result.Status)
             {
-                return NotFound();
+                return Ok(result);
             }
-            return Ok(user);
+            return BadRequest(result);
         }
 
         // Create User
-        [HttpPost]
+        [HttpPost("CreateUser")]
         public async Task<IActionResult> CreateUser([FromBody] CreateUserDto user)
         {
-            if (user == null)
+            var result = await _userServices.CreateUser(user);
+            if (result.Status)
             {
-                return BadRequest();
+                return Ok(result);
             }
-
-            await _userServices.CreateUser(user);
-            return CreatedAtAction(nameof(GetUserById), new { id = user.Username }, user);
+            return BadRequest(result);
         }
 
         // Update User
-        [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, [FromBody] UpdateUserDto user)
+        [HttpPut("UpdateUser")]
+        public async Task<IActionResult> UpdateUser([FromBody] UpdateUserDto user)
         {
-            if (user == null || id != user.Id)
+            var result = await _userServices.UpdateUser(user);
+            if (result.Status)
             {
-                return BadRequest();
+                return Ok(result);
             }
-
-            await _userServices.UpdateUser(user);
-            return NoContent();
+            return BadRequest(result);
         }
 
         // Delete User
-        [HttpDelete("{id}")]
+        [HttpDelete("DeleteUser")]
         public async Task<IActionResult> DeleteUser(int id)
         {
-            var user = await _userServices.GetByIdUser(id);
-            if (user == null)
+            var result = await _userServices.DeleteUser(id);
+            if (result.Status)
             {
-                return NotFound();
+                return Ok(result);
             }
-
-            await _userServices.DeleteUser(id);
-            return NoContent();
+            return BadRequest(result);
         }
     }
 }
