@@ -1,4 +1,6 @@
-﻿using Forum.Domain.Entities;
+﻿using Forum.Application.Dtos.PostDtos;
+using Forum.Application.Dtos.SubCommentDtos;
+using Forum.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,13 +14,12 @@ namespace Forum.Application.Dtos.CommentDtos
         public int Id { get; set; }
         public string Content { get; set; } // Yorum içeriği
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-        public int? UserId { get; set; }
-        public string Username { get; set; } // Kullanıcı adı
+        public int UserId { get; set; }
         public int PostId { get; set; } // Bağlı olduğu post
 
         // Navigation Properties
-        public User? User { get; set; }
-        public Post Post { get; set; }
-        public List<SubComment> SubComments { get; set; }
+        public User User { get; set; }
+        public CommentViewPostDto Post { get; set; }
+        public List<ResultSubCommentDto> SubComments { get; set; }
     }
 }

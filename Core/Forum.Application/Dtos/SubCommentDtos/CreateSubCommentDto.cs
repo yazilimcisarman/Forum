@@ -12,7 +12,6 @@ namespace Forum.Application.Dtos.SubCommentDtos
         public string Content { get; set; } // Yorum içeriği
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public int? UserId { get; set; }
-        public string Username { get; set; } // Kullanıcı adı
         public int CommentId { get; set; } // Bağlı olduğu ana yorum
 
     }

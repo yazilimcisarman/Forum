@@ -52,5 +52,22 @@ namespace Forum.API.Controllers
             }
             return BadRequest(result);
         }
+        [HttpPut("UpdatePost")]
+        public async Task<IActionResult> UpdatePost(UpdatePostDto dto)
+        {
+            var result = await _postServices.UpdatePost(dto);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        [HttpDelete("DeletePost")]
+        public async Task<IActionResult> DeletePost(int postId)
+        {
+            var result = await _postServices.DeletePost(postId);
+            if (result.Status) { return Ok(result); }
+            return BadRequest(result);
+        }
     }
 }

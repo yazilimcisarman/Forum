@@ -1,4 +1,5 @@
-﻿using Forum.Domain.Entities;
+﻿using Forum.Application.Dtos.CommentDtos;
+using Forum.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace Forum.Application.Dtos.PostDtos
         public string Content { get; set; } // İçerik
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
         public int UserId { get; set; }
-        public string Username { get; set; } // Kullanıcı adı ile eşleşecek
         public int CategoryId { get; set; } // Kategoriye bağlı
         public int StatusId { get; set; } // Post durumu (Gönderildi, Hazır, Yayınlandı vb.)
         public DateTime? ModifiedAt { get; set; }
@@ -25,6 +25,6 @@ namespace Forum.Application.Dtos.PostDtos
         public User User { get; set; }
         public Category Category { get; set; }
         public PostStatus Status { get; set; }
-        public List<Comment> Comments { get; set; }
+        public List<PostViewCommentDto> Comments { get; set; }
     }
 }

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Forum.Application.Dtos.CommentDtos
 {
-    public class GetByIdCommentDto
+    public class PostViewCommentDto
     {
         public int Id { get; set; }
         public string Content { get; set; } // Yorum içeriği
@@ -19,7 +19,6 @@ namespace Forum.Application.Dtos.CommentDtos
 
         // Navigation Properties
         public User User { get; set; }
-        public CommentViewPostDto Post { get; set; }
         public List<ResultSubCommentDto> SubComments { get; set; }
     }
 }

@@ -17,6 +17,6 @@ namespace Forum.Application.Dtos.SubCommentDtos
         public int CommentId { get; set; } // Bağlı olduğu ana yorum
 
         public User? User { get; set; }
-        public Comment Comment { get; set; } // Ana yoruma bağlı olacak
+        //public Comment Comment { get; set; } // Ana yoruma bağlı olacak
     }
 }
