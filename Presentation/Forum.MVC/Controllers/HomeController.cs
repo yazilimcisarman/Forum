@@ -1,21 +1,30 @@
+using Forum.Application.Dtos.PostDtos;
+using Forum.Application.Dtos.ResponseDtos;
 using Forum.MVC.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Net.Http;
 
 namespace Forum.MVC.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly HttpClient _httpClient;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IHttpClientFactory httpClient)
         {
             _logger = logger;
+            _httpClient = httpClient.CreateClient("api");
+
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var response = await _httpClient.GetAsync("Posts/GetHomePagePosts");
+            var json = await response.Content.ReadAsStringAsync();
+            var posts = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse<List<ResultPostDto>>>(json);
+            return View(posts.Data);
         }
 
         public IActionResult Privacy()

@@ -15,6 +15,7 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<GetByIdPostDto>> GetPostById(int PostId); 
         Task<ApiResponse<object>> CreatePost(CreatePostDto post); 
         Task<ApiResponse<object>> UpdatePost(UpdatePostDto post); 
-        Task<ApiResponse<object>> DeletePost(int postId); 
+        Task<ApiResponse<object>> DeletePost(int postId);
+        Task<ApiResponse<List<ResultPostDto>>> GetCountPosts(int count);
     }
 }

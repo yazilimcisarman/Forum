@@ -1,4 +1,5 @@
 ﻿using Forum.Application.Dtos.PostDtos;
+using Forum.Application.Dtos.ResponseDtos;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Forum.MVC.Controllers
@@ -12,12 +13,12 @@ namespace Forum.MVC.Controllers
             _httpClient = httpClient.CreateClient("api");
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var response = _httpClient.GetAsync("api/Posts/GetAllPosts").Result;
-            var json = response.Content.ReadAsStringAsync().Result;
-            var posts = Newtonsoft.Json.JsonConvert.DeserializeObject<List<ResultPostDto>>(json);
-            return View(posts);
+            var response = await _httpClient.GetAsync("Posts/GetAllPosts");
+            var json = await response.Content.ReadAsStringAsync();
+            var posts = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse<List<ResultPostDto>>>(json);
+            return View(posts.Data);
         }
         public IActionResult Detail(int? id)
         {

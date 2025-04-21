@@ -45,5 +45,10 @@ namespace Forum.Persistence.Repositories
             _context.Set<T>().Remove(entity);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<T>> GetTakeAsync(int count)
+        {
+            return await _context.Set<T>().OrderDescending().Take(count).ToListAsync();
+        }
     }
 }

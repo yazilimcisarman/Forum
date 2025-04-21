@@ -69,5 +69,15 @@ namespace Forum.API.Controllers
             if (result.Status) { return Ok(result); }
             return BadRequest(result);
         }
+        [HttpGet("GetHomePagePosts")]
+        public async Task<IActionResult> GetHomePagePosts(int count=6)
+        {
+            var result = await _postServices.GetCountPosts(count);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

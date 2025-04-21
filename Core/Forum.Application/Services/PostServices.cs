@@ -98,6 +98,28 @@ namespace Forum.Application.Services
             }
         }
 
+        public async Task<ApiResponse<List<ResultPostDto>>> GetCountPosts(int count)
+        {
+            try
+            {
+                var posts = await _repository.GetTakeAsync(count);
+                var users = await _userRepository.GetAllAsync();
+                var category = await _categoryRepository.GetAllAsync();
+                var poststatus = await _postStatusRepository.GetAllAsync();
+                var comments = await _commentRepository.GetAllAsync();
+                if (posts == null || posts.Count == 0)
+                {
+                    return new ApiResponse<List<ResultPostDto>> { Status = true, Data = null, Info = "Post Bulunamadi." };
+                }
+                var result = _mapper.Map<List<ResultPostDto>>(posts);
+                return new ApiResponse<List<ResultPostDto>> { Status = true, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<List<ResultPostDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
         public async Task<ApiResponse<GetByIdPostDto>> GetPostById(int postId)
         {
             try
