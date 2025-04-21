@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Forum sitesi kategoriler sayfası">
+    <title>Kategoriler - Forum Sitesi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.svg" alt="Yazılımcı Sarman Logo" height="40" class="me-2">
+                <span>Yazılımcı Sarman</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="kategoriler.html">Kategoriler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="populer.html">Popüler Konular</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="giris.html" class="btn btn-outline-light me-2">Giriş Yap</a>
+                    <a href="kayit.html" class="btn btn-light">Kayıt Ol</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Kategoriler Başlık -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">Forum Kategorileri</h1>
+                <p class="text-center text-muted mb-5">
+                    İlgi alanınıza göre kategorileri keşfedin ve tartışmalara katılın.
+                </p>
+            </div>
+        </div>
+
+        <!-- Kategori Kartları -->
+        <div class="row g-4">
+            <!-- Teknoloji Kategorisi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="category-icon bg-primary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-microchip text-primary fa-2x"></i>
+                            </div>
+                            <h5 class="card-title mb-0">Teknoloji</h5>
+                        </div>
+                        <p class="card-text">En son teknoloji haberleri, yazılım geliştirme, donanım ve dijital dünya hakkında tartışmalar.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted">
+                                <small><i class="fas fa-comments me-1"></i> 1,234 Konu</small>
+                            </div>
+                            <a href="kategori/teknoloji.html" class="btn btn-outline-primary">Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bilim Kategorisi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="category-icon bg-success bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-flask text-success fa-2x"></i>
+                            </div>
+                            <h5 class="card-title mb-0">Bilim</h5>
+                        </div>
+                        <p class="card-text">Bilimsel gelişmeler, keşifler ve araştırmalar hakkında bilgi paylaşımı ve tartışmalar.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted">
+                                <small><i class="fas fa-comments me-1"></i> 856 Konu</small>
+                            </div>
+                            <a href="kategori/bilim.html" class="btn btn-outline-success">Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sanat Kategorisi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="category-icon bg-warning bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-palette text-warning fa-2x"></i>
+                            </div>
+                            <h5 class="card-title mb-0">Sanat</h5>
+                        </div>
+                        <p class="card-text">Sanat, müzik, sinema ve kültür dünyasından haberler ve tartışmalar.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted">
+                                <small><i class="fas fa-comments me-1"></i> 678 Konu</small>
+                            </div>
+                            <a href="kategori/sanat.html" class="btn btn-outline-warning">Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Spor Kategorisi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="category-icon bg-danger bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-futbol text-danger fa-2x"></i>
+                            </div>
+                            <h5 class="card-title mb-0">Spor</h5>
+                        </div>
+                        <p class="card-text">Spor dünyasından haberler, maç analizleri ve sporcular hakkında tartışmalar.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted">
+                                <small><i class="fas fa-comments me-1"></i> 945 Konu</small>
+                            </div>
+                            <a href="kategori/spor.html" class="btn btn-outline-danger">Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Eğitim Kategorisi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="category-icon bg-info bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-graduation-cap text-info fa-2x"></i>
+                            </div>
+                            <h5 class="card-title mb-0">Eğitim</h5>
+                        </div>
+                        <p class="card-text">Eğitim sistemi, öğrenci deneyimleri ve akademik konular hakkında tartışmalar.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted">
+                                <small><i class="fas fa-comments me-1"></i> 567 Konu</small>
+                            </div>
+                            <a href="kategori/egitim.html" class="btn btn-outline-info">Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yaşam Kategorisi -->
+            <div class="col-md-6 col-lg-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="d-flex align-items-center mb-3">
+                            <div class="category-icon bg-secondary bg-opacity-10 p-3 rounded-circle me-3">
+                                <i class="fas fa-heart text-secondary fa-2x"></i>
+                            </div>
+                            <h5 class="card-title mb-0">Yaşam</h5>
+                        </div>
+                        <p class="card-text">Günlük yaşam, sağlık, beslenme ve kişisel gelişim konularında paylaşımlar.</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="text-muted">
+                                <small><i class="fas fa-comments me-1"></i> 789 Konu</small>
+                            </div>
+                            <a href="kategori/yasam.html" class="btn btn-outline-secondary">Görüntüle</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Hakkımızda</h5>
+                    <p>Modern ve kullanıcı dostu forum platformu.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Hızlı Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Ana Sayfa</a></li>
+                        <li><a href="#" class="text-light">Kategoriler</a></li>
+                        <li><a href="#" class="text-light">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>İletişim</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@forumsitesi.com</li>
+                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Forum Sitesi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html> 

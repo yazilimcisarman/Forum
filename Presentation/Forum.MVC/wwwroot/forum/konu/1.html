@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yapay Zeka ve Geleceğimiz - Forum Sitesi">
+    <title>Yapay Zeka ve Geleceğimiz - Forum Sitesi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">Forum Sitesi</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../kategoriler.html">Kategoriler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../populer.html">Popüler Konular</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="../giris.html" class="btn btn-outline-light me-2">Giriş Yap</a>
+                    <a href="../kayit.html" class="btn btn-light">Kayıt Ol</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Konu İçeriği -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Konu Başlığı ve Bilgileri -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start mb-4">
+                            <div>
+                                <h1 class="h2 mb-2">Yapay Zeka ve Geleceğimiz</h1>
+                                <div class="text-muted">
+                                    <small>
+                                        <i class="fas fa-user me-1"></i> Ahmet Yılmaz
+                                        <i class="fas fa-clock ms-3 me-1"></i> 3 saat önce
+                                        <i class="fas fa-folder ms-3 me-1"></i> Teknoloji
+                                    </small>
+                                </div>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge bg-primary mb-2">1.2K Görüntülenme</div>
+                                <div class="text-muted">
+                                    <small><i class="fas fa-comments me-1"></i> 45 Yorum</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Konu İçeriği -->
+                        <div class="topic-content mb-4">
+                            <p>Yapay zeka teknolojileri her geçen gün hayatımızın daha fazla alanına giriyor. Bu gelişmelerin toplum üzerindeki etkileri ve geleceğimizi nasıl şekillendireceği konusunda farklı görüşler mevcut.</p>
+                            
+                            <h3>Yapay Zekanın Avantajları</h3>
+                            <ul>
+                                <li>Otomasyon ve verimlilik artışı</li>
+                                <li>Yeni iş alanları ve fırsatlar</li>
+                                <li>Sağlık ve eğitim alanında gelişmeler</li>
+                                <li>Günlük yaşamı kolaylaştıran uygulamalar</li>
+                            </ul>
+
+                            <h3>Potansiyel Riskler</h3>
+                            <ul>
+                                <li>İş kayıpları ve ekonomik değişimler</li>
+                                <li>Gizlilik ve güvenlik endişeleri</li>
+                                <li>Etik sorunlar ve kontrol mekanizmaları</li>
+                                <li>Toplumsal eşitsizliklerin artması</li>
+                            </ul>
+
+                            <p>Bu konuda sizin görüşleriniz neler? Yapay zeka teknolojilerinin geleceğimizi nasıl etkileyeceğini düşünüyorsunuz?</p>
+                        </div>
+
+                        <!-- Etiketler -->
+                        <div class="tags mb-4">
+                            <span class="badge bg-primary me-2">#yapayzeka</span>
+                            <span class="badge bg-info me-2">#teknoloji</span>
+                            <span class="badge bg-success">#gelecek</span>
+                        </div>
+
+                        <!-- Paylaşım Butonları -->
+                        <div class="share-buttons mb-4">
+                            <button class="btn btn-outline-primary me-2">
+                                <i class="fas fa-share-alt me-1"></i> Paylaş
+                            </button>
+                            <button class="btn btn-outline-success me-2">
+                                <i class="fas fa-bookmark me-1"></i> Kaydet
+                            </button>
+                            <button class="btn btn-outline-danger">
+                                <i class="fas fa-flag me-1"></i> Raporla
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yorumlar -->
+                <div class="card shadow-sm">
+                    <div class="card-header bg-white border-bottom-0">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">
+                                <i class="fas fa-comments me-2 text-primary"></i>Yorumlar (45)
+                            </h5>
+                            <div class="dropdown">
+                                <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-sort me-1"></i>Sırala
+                                </button>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" href="#">En Yeni</a></li>
+                                    <li><a class="dropdown-item" href="#">En Popüler</a></li>
+                                    <li><a class="dropdown-item" href="#">En Çok Yanıt Alan</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <!-- Yorum Formu -->
+                        <form class="mb-4 comment-form">
+                            <div class="d-flex align-items-start">
+                                <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="Profil">
+                                <div class="flex-grow-1">
+                                    <textarea class="form-control" rows="3" placeholder="Düşüncelerinizi paylaşın..."></textarea>
+                                    <div class="d-flex justify-content-between align-items-center mt-2">
+                                        <div class="d-flex gap-2">
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                                <i class="fas fa-image"></i>
+                                            </button>
+                                            <button type="button" class="btn btn-sm btn-outline-secondary">
+                                                <i class="fas fa-link"></i>
+                                            </button>
+                                        </div>
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="fas fa-paper-plane me-1"></i>Gönder
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                        <!-- Yorum Listesi -->
+                        <div class="comments-section">
+                            <!-- Ana Yorum 1 -->
+                            <div class="comment mb-4">
+                                <div class="d-flex">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="Kullanıcı">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div>
+                                                <h6 class="mb-0">Mehmet Kaya</h6>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-clock me-1"></i>2 saat önce
+                                                </small>
+                                            </div>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-link text-muted" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i>Raporla</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-ban me-2"></i>Engelle</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="mb-2">Yapay zeka teknolojilerinin iş hayatındaki etkileri konusunda endişeliyim. Özellikle düşük vasıflı işlerin otomatikleşmesi toplumsal sorunlara yol açabilir.</p>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-thumbs-up me-1"></i>Beğen (12)
+                                            </button>
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-reply me-1"></i>Yanıtla
+                                            </button>
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-share me-1"></i>Paylaş
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Yanıt 1 -->
+                                <div class="comment-reply ms-5 mt-3">
+                                    <div class="d-flex">
+                                        <img src="https://via.placeholder.com/32" class="rounded-circle me-3" alt="Kullanıcı">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div>
+                                                    <h6 class="mb-0">Ahmet Yılmaz</h6>
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-clock me-1"></i>1 saat önce
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <p class="mb-2">Bu konuda haklısınız, ancak yeni iş alanları da oluşacak. Önemli olan insanların bu değişime adapte olabilmesi için gerekli eğitim ve desteklerin sağlanması.</p>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <button class="btn btn-sm btn-link text-muted">
+                                                    <i class="fas fa-thumbs-up me-1"></i>Beğen (5)
+                                                </button>
+                                                <button class="btn btn-sm btn-link text-muted">
+                                                    <i class="fas fa-reply me-1"></i>Yanıtla
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ana Yorum 2 -->
+                            <div class="comment mb-4">
+                                <div class="d-flex">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="Kullanıcı">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div>
+                                                <h6 class="mb-0">Ayşe Demir</h6>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-clock me-1"></i>3 saat önce
+                                                </small>
+                                            </div>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-link text-muted" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i>Raporla</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-ban me-2"></i>Engelle</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="mb-2">Yapay zeka sağlık alanında büyük fırsatlar sunuyor. Erken teşhis ve kişiselleştirilmiş tedaviler için çok önemli bir araç olacak.</p>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-thumbs-up me-1"></i>Beğen (8)
+                                            </button>
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-reply me-1"></i>Yanıtla
+                                            </button>
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-share me-1"></i>Paylaş
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Yanıt 2 -->
+                                <div class="comment-reply ms-5 mt-3">
+                                    <div class="d-flex">
+                                        <img src="https://via.placeholder.com/32" class="rounded-circle me-3" alt="Kullanıcı">
+                                        <div class="flex-grow-1">
+                                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                                <div>
+                                                    <h6 class="mb-0">Zeynep Şahin</h6>
+                                                    <small class="text-muted">
+                                                        <i class="fas fa-clock me-1"></i>2 saat önce
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <p class="mb-2">Özellikle kanser teşhisinde yapay zeka sistemlerinin başarı oranı oldukça yüksek. Gelecekte bu teknolojilerin daha da gelişmesiyle sağlık hizmetleri daha erişilebilir olacak.</p>
+                                            <div class="d-flex align-items-center gap-3">
+                                                <button class="btn btn-sm btn-link text-muted">
+                                                    <i class="fas fa-thumbs-up me-1"></i>Beğen (3)
+                                                </button>
+                                                <button class="btn btn-sm btn-link text-muted">
+                                                    <i class="fas fa-reply me-1"></i>Yanıtla
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Ana Yorum 3 -->
+                            <div class="comment">
+                                <div class="d-flex">
+                                    <img src="https://via.placeholder.com/40" class="rounded-circle me-3" alt="Kullanıcı">
+                                    <div class="flex-grow-1">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <div>
+                                                <h6 class="mb-0">Can Yılmaz</h6>
+                                                <small class="text-muted">
+                                                    <i class="fas fa-clock me-1"></i>4 saat önce
+                                                </small>
+                                            </div>
+                                            <div class="dropdown">
+                                                <button class="btn btn-sm btn-link text-muted" type="button" data-bs-toggle="dropdown">
+                                                    <i class="fas fa-ellipsis-v"></i>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-flag me-2"></i>Raporla</a></li>
+                                                    <li><a class="dropdown-item" href="#"><i class="fas fa-ban me-2"></i>Engelle</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <p class="mb-2">Eğitim sistemimizi yapay zeka teknolojilerine uygun şekilde yeniden düzenlememiz gerekiyor. Geleceğin iş dünyasına hazır nesiller yetiştirmeliyiz.</p>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-thumbs-up me-1"></i>Beğen (15)
+                                            </button>
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-reply me-1"></i>Yanıtla
+                                            </button>
+                                            <button class="btn btn-sm btn-link text-muted">
+                                                <i class="fas fa-share me-1"></i>Paylaş
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yan Panel -->
+            <div class="col-lg-4">
+                <!-- Benzer Konular -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Benzer Konular</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="2.html" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">İklim Değişikliği ve Sürdürülebilirlik</h6>
+                                <small class="text-muted">5 saat önce</small>
+                            </a>
+                            <a href="3.html" class="list-group-item list-group-item-action">
+                                <h6 class="mb-1">Modern Sanatın Yorumlanması</h6>
+                                <small class="text-muted">1 gün önce</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- En Aktif Kullanıcılar -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">En Aktif Kullanıcılar</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Kullanıcı">
+                                    Ahmet Yılmaz
+                                </div>
+                                <span class="badge bg-primary rounded-pill">1.2K</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Kullanıcı">
+                                    Ayşe Demir
+                                </div>
+                                <span class="badge bg-primary rounded-pill">980</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Kullanıcı">
+                                    Mehmet Kaya
+                                </div>
+                                <span class="badge bg-primary rounded-pill">850</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popüler Etiketler -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Popüler Etiketler</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="#" class="btn btn-sm btn-outline-primary">#yapayzeka</a>
+                            <a href="#" class="btn btn-sm btn-outline-success">#iklim</a>
+                            <a href="#" class="btn btn-sm btn-outline-info">#sanat</a>
+                            <a href="#" class="btn btn-sm btn-outline-warning">#teknoloji</a>
+                            <a href="#" class="btn btn-sm btn-outline-danger">#spor</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">#egitim</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Hakkımızda</h5>
+                    <p>Modern ve kullanıcı dostu forum platformu.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Hızlı Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Ana Sayfa</a></li>
+                        <li><a href="#" class="text-light">Kategoriler</a></li>
+                        <li><a href="#" class="text-light">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>İletişim</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@forumsitesi.com</li>
+                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Forum Sitesi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Yorum formu gönderimi
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const commentText = this.querySelector('textarea').value;
+            if (commentText.trim()) {
+                showToast('Yorumunuz başarıyla eklendi!', 'success');
+                this.reset();
+            }
+        });
+
+        // Beğeni butonları
+        document.querySelectorAll('.fa-thumbs-up').forEach(button => {
+            button.addEventListener('click', function() {
+                const count = this.nextSibling.textContent.match(/\d+/)[0];
+                this.nextSibling.textContent = ` Beğen (${parseInt(count) + 1})`;
+                this.classList.add('text-primary');
+            });
+        });
+    </script>
+</body>
+</html> 

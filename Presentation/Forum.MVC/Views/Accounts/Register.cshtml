@@ -1,0 +1,119 @@
+﻿<!-- Kayıt Formu -->
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-body p-5">
+                    <h2 class="text-center mb-4">Kayıt Ol</h2>
+                    <form id="registerForm" class="needs-validation" novalidate>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">Ad</label>
+                                <input type="text" class="form-control" id="firstName" required>
+                                <div class="invalid-feedback">
+                                    Lütfen adınızı girin.
+                                </div>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Soyad</label>
+                                <input type="text" class="form-control" id="lastName" required>
+                                <div class="invalid-feedback">
+                                    Lütfen soyadınızı girin.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="username" class="form-label">Kullanıcı Adı</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" class="form-control" id="username" required>
+                            </div>
+                            <div class="invalid-feedback">
+                                Lütfen bir kullanıcı adı girin.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">E-posta Adresi</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                                <input type="email" class="form-control" id="email" required>
+                            </div>
+                            <div class="invalid-feedback">
+                                Lütfen geçerli bir e-posta adresi girin.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="password" class="form-label">Şifre</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="password" required>
+                                <button class="btn btn-outline-secondary" type="button" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback">
+                                Lütfen bir şifre girin.
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Şifre Tekrar</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                                <input type="password" class="form-control" id="confirmPassword" required>
+                                <button class="btn btn-outline-secondary" type="button" id="toggleConfirmPassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                            <div class="invalid-feedback">
+                                Lütfen şifrenizi tekrar girin.
+                            </div>
+                        </div>
+                        <div class="mb-3 form-check">
+                            <input type="checkbox" class="form-check-input" id="terms" required>
+                            <label class="form-check-label" for="terms">
+                                <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Kullanım Koşulları</a>'nı okudum ve kabul ediyorum.
+                            </label>
+                            <div class="invalid-feedback">
+                                Devam etmek için kullanım koşullarını kabul etmelisiniz.
+                            </div>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-primary btn-lg">Kayıt Ol</button>
+                        </div>
+                    </form>
+                    <div class="text-center mt-4">
+                        <p class="mb-0">Zaten hesabınız var mı? <a href="giris.html">Giriş Yap</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Kullanım Koşulları Modal -->
+<div class="modal fade" id="termsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Kullanım Koşulları</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <h6>1. Genel Hükümler</h6>
+                <p>Bu forum sitesini kullanarak aşağıdaki koşulları kabul etmiş olursunuz.</p>
+
+                <h6>2. Üyelik</h6>
+                <p>Forum sitesine üye olmak için 13 yaşından büyük olmanız gerekmektedir.</p>
+
+                <h6>3. Gizlilik</h6>
+                <p>Kişisel bilgileriniz gizlilik politikamız kapsamında korunmaktadır.</p>
+
+                <h6>4. İçerik Kuralları</h6>
+                <p>Yayınlanan içeriklerin telif hakları ve sorumluluğu üyelere aittir.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>

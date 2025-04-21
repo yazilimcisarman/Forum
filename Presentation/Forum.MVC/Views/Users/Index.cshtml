@@ -1,0 +1,192 @@
+﻿<!-- Profil İçeriği -->
+<div class="container py-5">
+    <div class="row">
+        <!-- Sol Panel - Profil Bilgileri -->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Profil Fotoğrafı">
+                    <h3 class="card-title">Ahmet Yılmaz</h3>
+                    <p class="text-muted">@@ahmetyilmaz</p>
+                    <div class="d-flex justify-content-center gap-2 mb-3">
+                        <span class="badge bg-primary">Üye</span>
+                        <span class="badge bg-success">Aktif</span>
+                    </div>
+                    <p class="card-text">
+                        <i class="fas fa-calendar-alt me-2"></i> Katılım: Ocak 2024
+                    </p>
+                    <p class="card-text">
+                        <i class="fas fa-map-marker-alt me-2"></i> İstanbul, Türkiye
+                    </p>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-user-plus me-1"></i> Takip Et
+                        </button>
+                        <button class="btn btn-outline-primary">
+                            <i class="fas fa-envelope me-1"></i> Mesaj Gönder
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- İstatistikler -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">İstatistikler</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-6 mb-3">
+                            <h4 class="mb-0">1.2K</h4>
+                            <small class="text-muted">Görüntülenme</small>
+                        </div>
+                        <div class="col-6 mb-3">
+                            <h4 class="mb-0">45</h4>
+                            <small class="text-muted">Konu</small>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="mb-0">234</h4>
+                            <small class="text-muted">Yorum</small>
+                        </div>
+                        <div class="col-6">
+                            <h4 class="mb-0">89</h4>
+                            <small class="text-muted">Takipçi</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yetenekler -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Yetenekler</h5>
+                </div>
+                <div class="card-body">
+                    <div class="d-flex flex-wrap gap-2">
+                        <span class="badge bg-primary">Teknoloji</span>
+                        <span class="badge bg-success">Yapay Zeka</span>
+                        <span class="badge bg-info">Programlama</span>
+                        <span class="badge bg-warning">Veri Bilimi</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ Panel - İçerik -->
+        <div class="col-lg-8">
+            <!-- Sekmeler -->
+            <ul class="nav nav-tabs mb-4" id="profileTabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" id="konular-tab" data-bs-toggle="tab" href="#konular" role="tab">
+                        <i class="fas fa-file-alt me-1"></i> Konular
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="yorumlar-tab" data-bs-toggle="tab" href="#yorumlar" role="tab">
+                        <i class="fas fa-comments me-1"></i> Yorumlar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="beğeniler-tab" data-bs-toggle="tab" href="#begeniler" role="tab">
+                        <i class="fas fa-heart me-1"></i> Beğeniler
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" id="kaydedilenler-tab" data-bs-toggle="tab" href="#kaydedilenler" role="tab">
+                        <i class="fas fa-bookmark me-1"></i> Kaydedilenler
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Sekme İçerikleri -->
+            <div class="tab-content" id="profileTabContent">
+                <!-- Konular -->
+                <div class="tab-pane fade show active" id="konular" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="../konu/1.html" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Yapay Zeka ve Geleceğimiz</h6>
+                                            <small class="text-muted">3 saat önce</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-primary me-2">1.2K Görüntülenme</span>
+                                            <span class="badge bg-info">45 Yorum</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- Diğer konular buraya eklenecek -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Yorumlar -->
+                <div class="tab-pane fade" id="yorumlar" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <div class="list-group-item">
+                                    <div class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <h6 class="mb-1">Yapay Zeka ve Geleceğimiz</h6>
+                                            <p class="mb-1">Yapay zeka teknolojilerinin iş hayatındaki etkileri konusunda endişeliyim...</p>
+                                            <small class="text-muted">2 saat önce</small>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Diğer yorumlar buraya eklenecek -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Beğeniler -->
+                <div class="tab-pane fade" id="begeniler" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="../konu/2.html" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">İklim Değişikliği ve Sürdürülebilirlik</h6>
+                                            <small class="text-muted">5 saat önce</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-primary">980 Görüntülenme</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- Diğer beğeniler buraya eklenecek -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kaydedilenler -->
+                <div class="tab-pane fade" id="kaydedilenler" role="tabpanel">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="list-group list-group-flush">
+                                <a href="../konu/3.html" class="list-group-item list-group-item-action">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <h6 class="mb-1">Modern Sanatın Yorumlanması</h6>
+                                            <small class="text-muted">1 gün önce</small>
+                                        </div>
+                                        <div class="text-end">
+                                            <span class="badge bg-primary">850 Görüntülenme</span>
+                                        </div>
+                                    </div>
+                                </a>
+                                <!-- Diğer kaydedilenler buraya eklenecek -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

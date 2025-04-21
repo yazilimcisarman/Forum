@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Modern ve kullanıcı dostu forum platformu">
+    <title>Forum Sitesi - Ana Sayfa</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Fira+Code:wght@400;500;600&family=Source+Code+Pro:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="/images/logo.svg" alt="Yazılımcı Sarman Logo" height="40" class="me-2">
+                <span>Yazılımcı Sarman</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kategoriler.html">Kategoriler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="populer.html">Popüler Konular</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="giris.html" class="btn btn-outline-light me-2">Giriş Yap</a>
+                    <a href="kayit.html" class="btn btn-light">Kayıt Ol</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero-section text-center py-5 bg-light">
+        <div class="container">
+            <h1 class="display-4 mb-4">Forum Sitesine Hoş Geldiniz</h1>
+            <p class="lead mb-4">Düşüncelerinizi paylaşın, tartışın ve öğrenin</p>
+            <a href="kayit.html" class="btn btn-primary btn-lg">Hemen Üye Ol</a>
+        </div>
+    </div>
+
+    <!-- Son Konular Section -->
+    <div class="latest-topics-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Son Konular</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="list-group">
+                        <a href="konu/1.html" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">React vs Vue.js: 2024'te Hangisini Seçmeliyiz?</h5>
+                                <small>15 dakika önce</small>
+                            </div>
+                            <p class="mb-1">Modern web geliştirmede React ve Vue.js framework'lerinin karşılaştırmalı analizi ve hangi projeler için hangisinin daha uygun olduğu.</p>
+                            <small>Teknoloji kategorisi</small>
+                        </a>
+                        <a href="konu/2.html" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Docker ve Kubernetes ile Mikroservis Mimarisi</h5>
+                                <small>1 saat önce</small>
+                            </div>
+                            <p class="mb-1">Mikroservis mimarisinin avantajları ve Docker, Kubernetes kullanarak nasıl uygulanacağı hakkında detaylı bir rehber.</p>
+                            <small>Teknoloji kategorisi</small>
+                        </a>
+                        <a href="konu/3.html" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Python ile Veri Bilimi Projeleri</h5>
+                                <small>2 saat önce</small>
+                            </div>
+                            <p class="mb-1">Python kullanarak veri analizi ve makine öğrenmesi projeleri geliştirme süreçleri ve en iyi pratikler.</p>
+                            <small>Teknoloji kategorisi</small>
+                        </a>
+                        <a href="konu/4.html" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">TypeScript ile Tip Güvenli Geliştirme</h5>
+                                <small>3 saat önce</small>
+                            </div>
+                            <p class="mb-1">TypeScript'in avantajları ve JavaScript projelerinde tip güvenliği sağlama yöntemleri.</p>
+                            <small>Teknoloji kategorisi</small>
+                        </a>
+                        <a href="konu/5.html" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">Git Flow vs Trunk Based Development</h5>
+                                <small>4 saat önce</small>
+                            </div>
+                            <p class="mb-1">İki farklı CI/CD yaklaşımının karşılaştırması ve hangi durumlarda hangisinin tercih edilmesi gerektiği.</p>
+                            <small>Teknoloji kategorisi</small>
+                        </a>
+                        <a href="konu/6.html" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">GraphQL ile Modern API Tasarımı</h5>
+                                <small>5 saat önce</small>
+                            </div>
+                            <p class="mb-1">GraphQL'in REST API'lere göre avantajları ve modern web uygulamalarında nasıl kullanılacağı.</p>
+                            <small>Teknoloji kategorisi</small>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card mb-4">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Forum Görseli">
+                    <div class="card-body">
+                        <h5 class="card-title">Aktif Tartışmalar</h5>
+                        <p class="card-text">En güncel ve popüler tartışmalara katılın, fikirlerinizi paylaşın.</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Topluluk Görseli">
+                    <div class="card-body">
+                        <h5 class="card-title">Topluluk</h5>
+                        <p class="card-text">Diğer üyelerle etkileşime geçin, yeni insanlarla tanışın.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Bilgi Paylaşımı">
+                    <div class="card-body">
+                        <h5 class="card-title">Bilgi Paylaşımı</h5>
+                        <p class="card-text">Uzmanlardan öğrenin, deneyimlerinizi paylaşın.</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <img src="https://images.unsplash.com/photo-1559027615-cd4628902d4a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1474&q=80" class="card-img-top" alt="Yeni Başlayanlar">
+                    <div class="card-body">
+                        <h5 class="card-title">Yeni Başlayanlar</h5>
+                        <p class="card-text">Forum kullanımı hakkında bilgi edinin ve hemen başlayın.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Kategoriler Section -->
+    <div class="categories-section py-5">
+        <div class="container">
+            <h2 class="text-center mb-4">Popüler Kategoriler</h2>
+            <div class="row mt-5">
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Teknoloji">
+                        <div class="card-body">
+                            <h5 class="card-title">Teknoloji</h5>
+                            <p class="card-text">Teknoloji dünyasındaki son gelişmeler ve tartışmalar.</p>
+                            <a href="kategori.html" class="btn btn-outline-primary">Konulara Git</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Bilim">
+                        <div class="card-body">
+                            <h5 class="card-title">Bilim</h5>
+                            <p class="card-text">Bilimsel keşifler ve araştırmalar hakkında tartışmalar.</p>
+                            <a href="kategori.html" class="btn btn-outline-primary">Konulara Git</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1480&q=80" class="card-img-top" alt="Sanat">
+                        <div class="card-body">
+                            <h5 class="card-title">Sanat</h5>
+                            <p class="card-text">Sanat dünyası ve kültür hakkında tartışmalar.</p>
+                            <a href="kategori.html" class="btn btn-outline-primary">Konulara Git</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" class="card-img-top" alt="Spor">
+                        <div class="card-body">
+                            <h5 class="card-title">Spor</h5>
+                            <p class="card-text">Spor dünyası ve maç analizleri hakkında tartışmalar.</p>
+                            <a href="kategori.html" class="btn btn-outline-primary">Konulara Git</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Hakkımızda</h5>
+                    <p>Modern ve kullanıcı dostu forum platformu.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Hızlı Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Ana Sayfa</a></li>
+                        <li><a href="#" class="text-light">Kategoriler</a></li>
+                        <li><a href="#" class="text-light">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>İletişim</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@forumsitesi.com</li>
+                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Forum Sitesi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+</body>
+</html> 

@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Forum sitesi popüler konular sayfası">
+    <title>Popüler Konular - Forum Sitesi</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="images/logo.svg" alt="Yazılımcı Sarman Logo" height="40" class="me-2">
+                <span>Yazılımcı Sarman</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Ana Sayfa</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kategoriler.html">Kategoriler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="populer.html">Popüler Konular</a>
+                    </li>
+                </ul>
+                <div class="d-flex">
+                    <a href="giris.html" class="btn btn-outline-light me-2">Giriş Yap</a>
+                    <a href="kayit.html" class="btn btn-light">Kayıt Ol</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Popüler Konular Başlık -->
+    <div class="container py-5">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="text-center mb-4">Popüler Konular</h1>
+                <p class="text-center text-muted mb-5">
+                    En çok okunan ve tartışılan konuları keşfedin.
+                </p>
+            </div>
+        </div>
+
+        <!-- Filtreler -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="input-group">
+                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Konu ara..." id="searchInput">
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="d-flex justify-content-md-end">
+                    <select class="form-select w-auto me-2" id="categoryFilter">
+                        <option value="">Tüm Kategoriler</option>
+                        <option value="teknoloji">Teknoloji</option>
+                        <option value="bilim">Bilim</option>
+                        <option value="sanat">Sanat</option>
+                        <option value="spor">Spor</option>
+                        <option value="egitim">Eğitim</option>
+                        <option value="yasam">Yaşam</option>
+                    </select>
+                    <select class="form-select w-auto" id="sortFilter">
+                        <option value="popular">En Popüler</option>
+                        <option value="recent">En Yeni</option>
+                        <option value="comments">En Çok Yorum</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Konu Listesi -->
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Konu 1 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="card-title mb-1">
+                                    <a href="konu/1.html" class="text-decoration-none">Yapay Zeka ve Geleceğimiz</a>
+                                </h5>
+                                <p class="card-text text-muted mb-2">
+                                    <small>
+                                        <i class="fas fa-user me-1"></i> Ahmet Yılmaz
+                                        <i class="fas fa-clock ms-3 me-1"></i> 3 saat önce
+                                        <i class="fas fa-folder ms-3 me-1"></i> Teknoloji
+                                    </small>
+                                </p>
+                                <p class="card-text">Yapay zeka teknolojilerinin geleceğimizi nasıl şekillendireceği ve toplum üzerindeki etkileri hakkında tartışma.</p>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge bg-primary mb-2">1.2K Görüntülenme</div>
+                                <div class="text-muted">
+                                    <small><i class="fas fa-comments me-1"></i> 45 Yorum</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Konu 2 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="card-title mb-1">
+                                    <a href="konu/2.html" class="text-decoration-none">İklim Değişikliği ve Sürdürülebilirlik</a>
+                                </h5>
+                                <p class="card-text text-muted mb-2">
+                                    <small>
+                                        <i class="fas fa-user me-1"></i> Ayşe Demir
+                                        <i class="fas fa-clock ms-3 me-1"></i> 5 saat önce
+                                        <i class="fas fa-folder ms-3 me-1"></i> Bilim
+                                    </small>
+                                </p>
+                                <p class="card-text">İklim değişikliği ile mücadelede bireysel ve toplumsal sorumluluklarımız ve sürdürülebilir yaşam pratikleri.</p>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge bg-primary mb-2">980 Görüntülenme</div>
+                                <div class="text-muted">
+                                    <small><i class="fas fa-comments me-1"></i> 38 Yorum</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Konu 3 -->
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="card-title mb-1">
+                                    <a href="konu/3.html" class="text-decoration-none">Modern Sanatın Yorumlanması</a>
+                                </h5>
+                                <p class="card-text text-muted mb-2">
+                                    <small>
+                                        <i class="fas fa-user me-1"></i> Mehmet Kaya
+                                        <i class="fas fa-clock ms-3 me-1"></i> 1 gün önce
+                                        <i class="fas fa-folder ms-3 me-1"></i> Sanat
+                                    </small>
+                                </p>
+                                <p class="card-text">Modern sanat eserlerinin yorumlanması ve anlaşılması konusunda farklı yaklaşımlar ve tartışmalar.</p>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge bg-primary mb-2">850 Görüntülenme</div>
+                                <div class="text-muted">
+                                    <small><i class="fas fa-comments me-1"></i> 32 Yorum</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sayfalama -->
+                <nav aria-label="Sayfalama">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Yan Panel -->
+            <div class="col-lg-4">
+                <!-- En Aktif Kullanıcılar -->
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">En Aktif Kullanıcılar</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="list-group list-group-flush">
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Kullanıcı">
+                                    Ahmet Yılmaz
+                                </div>
+                                <span class="badge bg-primary rounded-pill">1.2K</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Kullanıcı">
+                                    Ayşe Demir
+                                </div>
+                                <span class="badge bg-primary rounded-pill">980</span>
+                            </a>
+                            <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                                <div>
+                                    <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Kullanıcı">
+                                    Mehmet Kaya
+                                </div>
+                                <span class="badge bg-primary rounded-pill">850</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Popüler Etiketler -->
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Popüler Etiketler</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <a href="#" class="btn btn-sm btn-outline-primary">#yapayzeka</a>
+                            <a href="#" class="btn btn-sm btn-outline-success">#iklim</a>
+                            <a href="#" class="btn btn-sm btn-outline-info">#sanat</a>
+                            <a href="#" class="btn btn-sm btn-outline-warning">#teknoloji</a>
+                            <a href="#" class="btn btn-sm btn-outline-danger">#spor</a>
+                            <a href="#" class="btn btn-sm btn-outline-secondary">#egitim</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>Hakkımızda</h5>
+                    <p>Modern ve kullanıcı dostu forum platformu.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Hızlı Bağlantılar</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="text-light">Ana Sayfa</a></li>
+                        <li><a href="#" class="text-light">Kategoriler</a></li>
+                        <li><a href="#" class="text-light">İletişim</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>İletişim</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope"></i> info@forumsitesi.com</li>
+                        <li><i class="fas fa-phone"></i> +90 555 123 4567</li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p class="mb-0">&copy; 2024 Forum Sitesi. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="js/main.js"></script>
+    <script>
+        // Arama ve filtreleme fonksiyonları
+        document.getElementById('searchInput').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const topics = document.querySelectorAll('.card');
+            
+            topics.forEach(topic => {
+                const title = topic.querySelector('.card-title').textContent.toLowerCase();
+                const content = topic.querySelector('.card-text').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || content.includes(searchTerm)) {
+                    topic.style.display = 'block';
+                } else {
+                    topic.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('categoryFilter').addEventListener('change', function(e) {
+            const selectedCategory = e.target.value.toLowerCase();
+            const topics = document.querySelectorAll('.card');
+            
+            topics.forEach(topic => {
+                const category = topic.querySelector('.fa-folder').nextSibling.textContent.trim().toLowerCase();
+                
+                if (!selectedCategory || category === selectedCategory) {
+                    topic.style.display = 'block';
+                } else {
+                    topic.style.display = 'none';
+                }
+            });
+        });
+
+        document.getElementById('sortFilter').addEventListener('change', function(e) {
+            const sortBy = e.target.value;
+            const topicsContainer = document.querySelector('.col-lg-8');
+            const topics = Array.from(document.querySelectorAll('.card'));
+            
+            topics.sort((a, b) => {
+                if (sortBy === 'popular') {
+                    const viewsA = parseInt(a.querySelector('.badge').textContent);
+                    const viewsB = parseInt(b.querySelector('.badge').textContent);
+                    return viewsB - viewsA;
+                } else if (sortBy === 'recent') {
+                    const timeA = a.querySelector('.fa-clock').nextSibling.textContent;
+                    const timeB = b.querySelector('.fa-clock').nextSibling.textContent;
+                    return timeA.localeCompare(timeB);
+                } else if (sortBy === 'comments') {
+                    const commentsA = parseInt(a.querySelector('.fa-comments').nextSibling.textContent);
+                    const commentsB = parseInt(b.querySelector('.fa-comments').nextSibling.textContent);
+                    return commentsB - commentsA;
+                }
+                return 0;
+            });
+            
+            topics.forEach(topic => topicsContainer.appendChild(topic));
+        });
+    </script>
+</body>
+</html> 

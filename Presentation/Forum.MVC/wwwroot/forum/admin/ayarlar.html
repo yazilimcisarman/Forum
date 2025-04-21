@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Forum Sitesi Admin Paneli - Ayarlar">
+    <title>Ayarlar - Admin Paneli</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Admin Sidebar -->
+    <div class="admin-sidebar">
+        <div class="p-3">
+            <div class="d-flex align-items-center mb-4">
+                <img src="../images/logo.svg" alt="Yazılımcı Sarman Logo" height="40" class="me-2">
+                <h4 class="text-white mb-0">Admin Panel</h4>
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">
+                        <i class="fas fa-home me-2"></i>Ana Sayfa
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="konular.html">
+                        <i class="fas fa-comments me-2"></i>Konular
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="kullanicilar.html">
+                        <i class="fas fa-users me-2"></i>Kullanıcılar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="kategoriler.html">
+                        <i class="fas fa-folder me-2"></i>Kategoriler
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="raporlar.html">
+                        <i class="fas fa-chart-bar me-2"></i>Raporlar
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="ayarlar.html">
+                        <i class="fas fa-cog me-2"></i>Ayarlar
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="admin-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Yeni yorum</a></li>
+                            <li><a class="dropdown-item" href="#">Yeni kullanıcı</a></li>
+                            <li><a class="dropdown-item" href="#">Sistem bildirimi</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Admin">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Ayarlar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Ayarlar</h2>
+            </div>
+
+            <div class="card">
+                <div class="card-body">
+                    <ul class="nav nav-tabs" id="settingsTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#general">
+                                <i class="fas fa-cog me-2"></i>Genel Ayarlar
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#email">
+                                <i class="fas fa-envelope me-2"></i>E-posta Ayarları
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#security">
+                                <i class="fas fa-shield-alt me-2"></i>Güvenlik
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#notifications">
+                                <i class="fas fa-bell me-2"></i>Bildirimler
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#backup">
+                                <i class="fas fa-database me-2"></i>Yedekleme
+                            </button>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content mt-4" id="settingsTabContent">
+                        <!-- Genel Ayarlar -->
+                        <div class="tab-pane fade show active" id="general">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Site Başlığı</label>
+                                    <input type="text" class="form-control" value="Forum Sitesi">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Site Açıklaması</label>
+                                    <textarea class="form-control" rows="3">Bilgi paylaşım ve tartışma platformu</textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">SEO Anahtar Kelimeleri</label>
+                                    <input type="text" class="form-control" value="forum, tartışma, bilgi paylaşımı">
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Logo</label>
+                                        <input type="file" class="form-control">
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Favicon</label>
+                                        <input type="file" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <div class="col-md-6">
+                                        <label class="form-label">Zaman Dilimi</label>
+                                        <select class="form-select">
+                                            <option value="UTC+3">İstanbul (UTC+3)</option>
+                                            <option value="UTC+2">Atina (UTC+2)</option>
+                                            <option value="UTC+1">Paris (UTC+1)</option>
+                                            <option value="UTC">Londra (UTC)</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Dil</label>
+                                        <select class="form-select">
+                                            <option value="tr">Türkçe</option>
+                                            <option value="en">English</option>
+                                            <option value="de">Deutsch</option>
+                                            <option value="fr">Français</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </form>
+                        </div>
+
+                        <!-- E-posta Ayarları -->
+                        <div class="tab-pane fade" id="email">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">SMTP Sunucu</label>
+                                    <input type="text" class="form-control" value="smtp.example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">SMTP Port</label>
+                                    <input type="number" class="form-control" value="587">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">E-posta Adresi</label>
+                                    <input type="email" class="form-control" value="info@example.com">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Şifre</label>
+                                    <input type="password" class="form-control" value="********">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Şifreleme</label>
+                                    <select class="form-select">
+                                        <option value="tls">TLS</option>
+                                        <option value="ssl">SSL</option>
+                                        <option value="none">Yok</option>
+                                    </select>
+                                </div>
+                                <button type="button" class="btn btn-secondary me-2">Test E-postası Gönder</button>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </form>
+                        </div>
+
+                        <!-- Güvenlik -->
+                        <div class="tab-pane fade" id="security">
+                            <form>
+                                <div class="mb-3">
+                                    <label class="form-label">Minimum Şifre Uzunluğu</label>
+                                    <input type="number" class="form-control" value="8">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Oturum Süresi (dakika)</label>
+                                    <input type="number" class="form-control" value="60">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Maksimum Başarısız Giriş Denemesi</label>
+                                    <input type="number" class="form-control" value="5">
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">İki Faktörlü Doğrulama</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Güçlü Şifre Zorunluluğu</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </form>
+                        </div>
+
+                        <!-- Bildirimler -->
+                        <div class="tab-pane fade" id="notifications">
+                            <form>
+                                <h6 class="mb-3">E-posta Bildirimleri</h6>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Yeni Kullanıcı Kaydı</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Yeni Konu</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label">Yeni Yorum</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Raporlanan İçerik</label>
+                                    </div>
+                                </div>
+
+                                <h6 class="mb-3 mt-4">Push Bildirimleri</h6>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Yeni Mesaj</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox">
+                                        <label class="form-check-label">Sistem Güncellemeleri</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </form>
+                        </div>
+
+                        <!-- Yedekleme -->
+                        <div class="tab-pane fade" id="backup">
+                            <form>
+                                <div class="mb-3">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                        <label class="form-check-label">Otomatik Yedekleme</label>
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Yedekleme Sıklığı</label>
+                                    <select class="form-select">
+                                        <option value="daily">Günlük</option>
+                                        <option value="weekly">Haftalık</option>
+                                        <option value="monthly">Aylık</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Yedekleme Zamanı</label>
+                                    <input type="time" class="form-control" value="03:00">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Yedekleme Konumu</label>
+                                    <input type="text" class="form-control" value="/backups">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Saklama Süresi (gün)</label>
+                                    <input type="number" class="form-control" value="30">
+                                </div>
+                                <button type="button" class="btn btn-secondary me-2">Manuel Yedekleme</button>
+                                <button type="submit" class="btn btn-primary">Kaydet</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Admin panel toggle menü
+        const adminToggle = document.querySelector('.admin-toggle');
+        const adminSidebar = document.querySelector('.admin-sidebar');
+        const adminContent = document.querySelector('.admin-content');
+        const adminHeader = document.querySelector('.admin-header');
+
+        // Sayfa yüklendiğinde ekran boyutunu kontrol et
+        function checkScreenSize() {
+            if (window.innerWidth <= 991.98) {
+                adminSidebar.classList.remove('show');
+                adminContent.style.marginLeft = '0';
+                adminHeader.style.left = '0';
+            } else {
+                adminContent.style.marginLeft = '250px';
+                adminHeader.style.left = '250px';
+            }
+        }
+
+        // Toggle menü tıklama olayı
+        adminToggle.addEventListener('click', function() {
+            adminSidebar.classList.toggle('show');
+            if (adminSidebar.classList.contains('show')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Sayfa yüklendiğinde ve ekran boyutu değiştiğinde kontrol et
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+
+        // Sayfa değiştiğinde sidebar'ı kapat
+        document.querySelectorAll('.admin-sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 991.98) {
+                    adminSidebar.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Sayfa dışına tıklandığında sidebar'ı kapat
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 991.98 && 
+                !adminSidebar.contains(event.target) && 
+                !adminToggle.contains(event.target)) {
+                adminSidebar.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+    <style>
+        .admin-header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 250px;
+            z-index: 1000;
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        @media (max-width: 991.98px) {
+            .admin-header {
+                left: 0;
+            }
+        }
+
+        .admin-header .d-flex {
+            width: 100%;
+        }
+
+        .admin-header .d-flex:last-child {
+            justify-content: flex-end;
+        }
+    </style>
+</body>
+</html> 

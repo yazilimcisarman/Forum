@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <!-- Arka plan dairesi -->
+    <circle cx="100" cy="100" r="90" fill="#2563eb"/>
+    
+    <!-- Kod sembolü -->
+    <path d="M60 70 L80 100 L60 130 M140 70 L120 100 L140 130" 
+          stroke="white" 
+          stroke-width="8" 
+          stroke-linecap="round"/>
+    
+    <!-- Sarman kedi silueti -->
+    <path d="M100 40 
+             C 120 40, 140 60, 140 80
+             C 140 100, 120 120, 100 120
+             C 80 120, 60 100, 60 80
+             C 60 60, 80 40, 100 40
+             Z" 
+          fill="white"/>
+    
+    <!-- Kedi kulakları -->
+    <path d="M85 40 L75 20 L95 20 Z" fill="white"/>
+    <path d="M115 40 L125 20 L105 20 Z" fill="white"/>
+    
+    <!-- Kedi gözleri -->
+    <circle cx="85" cy="80" r="5" fill="#2563eb"/>
+    <circle cx="115" cy="80" r="5" fill="#2563eb"/>
+    
+    <!-- Kedi bıyıkları -->
+    <path d="M75 90 L95 90 M105 90 L125 90" 
+          stroke="#2563eb" 
+          stroke-width="2"/>
+</svg> 

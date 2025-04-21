@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Forum Sitesi Admin Paneli - Kategoriler">
+    <title>Kategoriler - Admin Paneli</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="admin-sidebar">
+        <div class="p-3">
+            <div class="d-flex align-items-center mb-4">
+                <img src="../images/logo.svg" alt="Yazılımcı Sarman Logo" height="40" class="me-2">
+                <h4 class="text-white mb-0">Admin Panel</h4>
+            </div>
+        </div>
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link" href="index.html">
+                    <i class="fas fa-home me-2"></i> Ana Sayfa
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="kullanicilar.html">
+                    <i class="fas fa-users me-2"></i> Kullanıcılar
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="konular.html">
+                    <i class="fas fa-comments me-2"></i> Konular
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="yorumlar.html">
+                    <i class="fas fa-comment me-2"></i> Yorumlar
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="kategoriler.html">
+                    <i class="fas fa-folder me-2"></i> Kategoriler
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="raporlar.html">
+                    <i class="fas fa-chart-bar me-2"></i> Raporlar
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="ayarlar.html">
+                    <i class="fas fa-cog me-2"></i> Ayarlar
+                </a>
+            </li>
+            <li class="nav-item mt-4">
+                <a class="nav-link text-danger" href="giris.html">
+                    <i class="fas fa-sign-out-alt me-2"></i> Çıkış Yap
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Ana İçerik -->
+    <div class="admin-content">
+        <div class="admin-header">
+            <div class="d-flex justify-content-between align-items-center w-100">
+                <div class="admin-toggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+                <div class="d-flex align-items-center">
+                    <div class="dropdown me-3">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                3
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Yeni yorum</a></li>
+                            <li><a class="dropdown-item" href="#">Yeni kullanıcı</a></li>
+                            <li><a class="dropdown-item" href="#">Sistem bildirimi</a></li>
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" role="button" data-bs-toggle="dropdown">
+                            <img src="https://via.placeholder.com/32" class="rounded-circle me-2" alt="Admin">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#">Profil</a></li>
+                            <li><a class="dropdown-item" href="#">Ayarlar</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#">Çıkış Yap</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid mt-5">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2>Kategoriler</h2>
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#yeniKategoriModal">
+                    <i class="fas fa-plus me-2"></i> Yeni Kategori
+                </button>
+            </div>
+
+            <div class="row">
+                <!-- Teknoloji Kategorisi -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-laptop text-primary fa-2x me-3"></i>
+                                    <h5 class="card-title mb-0">Teknoloji</h5>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-dark" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Düzenle</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Sil</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted">Teknoloji dünyasındaki son gelişmeler, yazılım, donanım ve dijital trendler.</p>
+                            <div class="d-flex justify-content-between text-muted">
+                                <small><i class="fas fa-file-alt me-2"></i>150 Konu</small>
+                                <small><i class="fas fa-comments me-2"></i>450 Yorum</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bilim Kategorisi -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-flask text-success fa-2x me-3"></i>
+                                    <h5 class="card-title mb-0">Bilim</h5>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-dark" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Düzenle</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Sil</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted">Bilimsel keşifler, araştırmalar ve bilim dünyasından haberler.</p>
+                            <div class="d-flex justify-content-between text-muted">
+                                <small><i class="fas fa-file-alt me-2"></i>120 Konu</small>
+                                <small><i class="fas fa-comments me-2"></i>380 Yorum</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sanat Kategorisi -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-palette text-warning fa-2x me-3"></i>
+                                    <h5 class="card-title mb-0">Sanat</h5>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-dark" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Düzenle</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Sil</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted">Sanat dünyası, modern sanat, resim, heykel ve sanatsal etkinlikler.</p>
+                            <div class="d-flex justify-content-between text-muted">
+                                <small><i class="fas fa-file-alt me-2"></i>90 Konu</small>
+                                <small><i class="fas fa-comments me-2"></i>250 Yorum</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spor Kategorisi -->
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <div class="d-flex align-items-center">
+                                    <i class="fas fa-futbol text-danger fa-2x me-3"></i>
+                                    <h5 class="card-title mb-0">Spor</h5>
+                                </div>
+                                <div class="dropdown">
+                                    <button class="btn btn-link text-dark" data-bs-toggle="dropdown">
+                                        <i class="fas fa-ellipsis-v"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="fas fa-edit me-2"></i>Düzenle</a></li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i class="fas fa-trash me-2"></i>Sil</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <p class="card-text text-muted">Spor haberleri, maç sonuçları, spor yorumları ve analizler.</p>
+                            <div class="d-flex justify-content-between text-muted">
+                                <small><i class="fas fa-file-alt me-2"></i>200 Konu</small>
+                                <small><i class="fas fa-comments me-2"></i>600 Yorum</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yeni Kategori Modal -->
+    <div class="modal fade" id="yeniKategoriModal" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Yeni Kategori Ekle</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="mb-3">
+                            <label class="form-label">Kategori Adı</label>
+                            <input type="text" class="form-control" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Açıklama</label>
+                            <textarea class="form-control" rows="3" required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">İkon</label>
+                            <select class="form-select">
+                                <option value="laptop">💻 Laptop</option>
+                                <option value="flask">🧪 Flask</option>
+                                <option value="palette">🎨 Palette</option>
+                                <option value="futbol">⚽ Futbol</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Renk</label>
+                            <input type="color" class="form-control form-control-color" value="#0d6efd">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">İptal</button>
+                    <button type="button" class="btn btn-primary">Kaydet</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Admin panel toggle menü
+        const adminToggle = document.querySelector('.admin-toggle');
+        const adminSidebar = document.querySelector('.admin-sidebar');
+        const adminContent = document.querySelector('.admin-content');
+        const adminHeader = document.querySelector('.admin-header');
+
+        // Sayfa yüklendiğinde ekran boyutunu kontrol et
+        function checkScreenSize() {
+            if (window.innerWidth <= 991.98) {
+                adminSidebar.classList.remove('show');
+                adminContent.style.marginLeft = '0';
+                adminHeader.style.left = '0';
+            } else {
+                adminContent.style.marginLeft = '250px';
+                adminHeader.style.left = '250px';
+            }
+        }
+
+        // Toggle menü tıklama olayı
+        adminToggle.addEventListener('click', function() {
+            adminSidebar.classList.toggle('show');
+            if (adminSidebar.classList.contains('show')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Sayfa yüklendiğinde ve ekran boyutu değiştiğinde kontrol et
+        window.addEventListener('load', checkScreenSize);
+        window.addEventListener('resize', checkScreenSize);
+
+        // Sayfa değiştiğinde sidebar'ı kapat
+        document.querySelectorAll('.admin-sidebar .nav-link').forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 991.98) {
+                    adminSidebar.classList.remove('show');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Sayfa dışına tıklandığında sidebar'ı kapat
+        document.addEventListener('click', function(event) {
+            if (window.innerWidth <= 991.98 && 
+                !adminSidebar.contains(event.target) && 
+                !adminToggle.contains(event.target)) {
+                adminSidebar.classList.remove('show');
+                document.body.style.overflow = '';
+            }
+        });
+    </script>
+
+    <style>
+        .admin-header {
+            position: fixed;
+            top: 0;
+            right: 0;
+            left: 250px;
+            z-index: 1000;
+            background: #fff;
+            padding: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+        }
+
+        @media (max-width: 991.98px) {
+            .admin-header {
+                left: 0;
+            }
+        }
+
+        .admin-header .d-flex {
+            width: 100%;
+        }
+
+        .admin-header .d-flex:last-child {
+            justify-content: flex-end;
+        }
+    </style>
+</body>
+</html> 
