@@ -1,0 +1,23 @@
+﻿@using Forum.Application.Dtos.CategoryDtos
+@model List<ResultCategoryDto>
+<div class="categories-section py-5">
+    <div class="container">
+        <h2 class="text-center mb-4">Popüler Kategoriler</h2>
+        <div class="row mt-5">
+            @foreach (var item in Model)
+            {
+                <div class="col-md-3 mb-4">
+                    <div class="card h-100">
+                        <img src="@item.ImageUrl" class="card-img-top" alt="Teknoloji">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">@item.Description</p>
+                            <a href="kategori.html" class="btn btn-outline-primary">Konulara Git</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+        </div>
+    </div>
+</div>

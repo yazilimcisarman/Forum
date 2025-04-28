@@ -63,5 +63,15 @@ namespace Forum.API.Controllers
                 return Ok(result);
             return BadRequest(result);
         }
+        [HttpGet("GetHomePopularCategory")]
+        public async Task<IActionResult> GetHomePopularCategory()
+        {
+            var result = await _categoryServices.GetHomePopularCategory();
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

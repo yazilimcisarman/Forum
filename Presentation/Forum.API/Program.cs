@@ -33,6 +33,7 @@ builder.Services.AddScoped<UserManager<ForumIdentityUser>>();
 builder.Services.AddScoped<SignInManager<ForumIdentityUser>>();
 builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
 builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
+builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
 builder.Services.AddScoped<ICategoryServices, CategoryServices>();
 builder.Services.AddScoped<IPostStatusServices, PostStatusServices>();
 builder.Services.AddScoped<IUserServices, UserServices>();

@@ -20,9 +20,12 @@ namespace Forum.MVC.Controllers
             var posts = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse<List<ResultPostDto>>>(json);
             return View(posts.Data);
         }
-        public IActionResult Detail(int? id)
+        public async Task<IActionResult> Detail(int? id)
         {
-            return View();
+            var response = await _httpClient.GetAsync("Posts/GetPostById?id="+id);
+            var json = await response.Content.ReadAsStringAsync();
+            var posts = Newtonsoft.Json.JsonConvert.DeserializeObject<ApiResponse<GetByIdPostDto>>(json);
+            return View(posts.Data);
         }
     }
 }

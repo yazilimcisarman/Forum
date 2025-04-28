@@ -18,5 +18,6 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<object>> DeleteCategory(int categoryId); // Kategori sil
         Task<ApiResponse<object>> IncreasePostCount(int categoryId);
         Task<ApiResponse<object>> DecreasePostCount(int categoryId);
+        Task<ApiResponse<List<ResultCategoryDto>>> GetHomePopularCategory(); 
     }
 }

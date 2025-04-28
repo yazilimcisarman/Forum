@@ -50,5 +50,6 @@ namespace Forum.Persistence.Repositories
         {
             return await _context.Set<T>().OrderDescending().Take(count).ToListAsync();
         }
+        
     }
 }

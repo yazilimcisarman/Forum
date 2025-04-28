@@ -1,4 +1,6 @@
-﻿<!-- Konu İçeriği -->
+﻿@using Forum.Application.Dtos.PostDtos
+@model GetByIdPostDto
+<!-- Konu İçeriği -->
 <div class="container py-5">
     <div class="row">
         <div class="col-lg-8">
@@ -7,28 +9,29 @@
                 <div class="card-body">
                     <div class="d-flex justify-content-between align-items-start mb-4">
                         <div>
-                            <h1 class="h2 mb-2">Yapay Zeka ve Geleceğimiz</h1>
+                            <h1 class="h2 mb-2">@Model.Title</h1>
                             <div class="text-muted">
                                 <small>
-                                    <i class="fas fa-user me-1"></i> Ahmet Yılmaz
-                                    <i class="fas fa-clock ms-3 me-1"></i> 3 saat önce
-                                    <i class="fas fa-folder ms-3 me-1"></i> Teknoloji
+                                    <i class="fas fa-user me-1"></i> @Model.User.Username
+                                    <i class="fas fa-clock ms-3 me-1"></i> @Model.CreatedAt
+                                    <i class="fas fa-folder ms-3 me-1"></i> @Model.Category.Name
                                 </small>
                             </div>
                         </div>
                         <div class="text-end">
+                            @* buraya giruntulenme gelecek *@
                             <div class="badge bg-primary mb-2">1.2K Görüntülenme</div>
                             <div class="text-muted">
-                                <small><i class="fas fa-comments me-1"></i> 45 Yorum</small>
+                                <small><i class="fas fa-comments me-1"></i> @Model.Comments.Count</small>
                             </div>
                         </div>
                     </div>
 
                     <!-- Konu İçeriği -->
                     <div class="topic-content mb-4">
-                        <p>Yapay zeka teknolojileri her geçen gün hayatımızın daha fazla alanına giriyor. Bu gelişmelerin toplum üzerindeki etkileri ve geleceğimizi nasıl şekillendireceği konusunda farklı görüşler mevcut.</p>
+                        <p>@Model.Content</p>
 
-                        <h3>Yapay Zekanın Avantajları</h3>
+                        @* <h3>Yapay Zekanın Avantajları</h3>
                         <ul>
                             <li>Otomasyon ve verimlilik artışı</li>
                             <li>Yeni iş alanları ve fırsatlar</li>
@@ -44,7 +47,7 @@
                             <li>Toplumsal eşitsizliklerin artması</li>
                         </ul>
 
-                        <p>Bu konuda sizin görüşleriniz neler? Yapay zeka teknolojilerinin geleceğimizi nasıl etkileyeceğini düşünüyorsunuz?</p>
+                        <p>Bu konuda sizin görüşleriniz neler? Yapay zeka teknolojilerinin geleceğimizi nasıl etkileyeceğini düşünüyorsunuz?</p> *@
                     </div>
 
                     <!-- Etiketler -->

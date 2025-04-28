@@ -19,12 +19,14 @@ namespace Forum.Application.Services
         private readonly IGenericRepository<Category> _categoryRepository;
         private readonly IValidator<CreateCategoryDto> _validator;
         private readonly IValidator<UpdateCategoryDto> _updateValidator;
+        private readonly ICategoryRepository _categoryRepository2;
 
-        public CategoryServices(IGenericRepository<Category> categoryRepository, IValidator<CreateCategoryDto> validator, IValidator<UpdateCategoryDto> updateValidator)
+        public CategoryServices(IGenericRepository<Category> categoryRepository, IValidator<CreateCategoryDto> validator, IValidator<UpdateCategoryDto> updateValidator, ICategoryRepository categoryRepository2)
         {
             _categoryRepository = categoryRepository;
             _validator = validator;
             _updateValidator = updateValidator;
+            _categoryRepository2 = categoryRepository2;
         }
 
         public async Task<ApiResponse<List<ResultCategoryDto>>> GetAllCategories()
@@ -190,6 +192,37 @@ namespace Forum.Application.Services
             catch (Exception ex)
             {
                 return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        public async Task<ApiResponse<List<ResultCategoryDto>>> GetHomePopularCategory()
+        {
+            try
+            {
+                var categories = await _categoryRepository2.GetHomePopularCategory();
+                if (categories.Count == 0 || categories == null)
+                {
+                    return new ApiResponse<List<ResultCategoryDto>> { Status = true, Data = null, Info = "Kategori Bulunamadı." };
+                }
+                var categoryDtos = new List<ResultCategoryDto>();
+
+                foreach (var category in categories)
+                {
+                    categoryDtos.Add(new ResultCategoryDto
+                    {
+                        Id = category.Id,
+                        Name = category.Name,
+                        Description = category.Description,
+                        PostCount = category.PostCount,
+                        ImageUrl = category.ImageUrl
+                    });
+                }
+
+                return new ApiResponse<List<ResultCategoryDto>> { Status = true, Data = categoryDtos };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<List<ResultCategoryDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
             }
         }
     }

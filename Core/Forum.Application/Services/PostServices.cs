@@ -21,11 +21,12 @@ namespace Forum.Application.Services
         private readonly IGenericRepository<Category> _categoryRepository;
         private readonly IGenericRepository<PostStatus> _postStatusRepository;
         private readonly IGenericRepository<Comment> _commentRepository;
+        private readonly IGenericRepository<SubComment> _subCommentRepository;
         private readonly IMapper _mapper;
         private readonly IValidator<CreatePostDto> _createPostValidator;
         private readonly IValidator<UpdatePostDto> _updatePostValidator;
 
-        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository)
+        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository, IGenericRepository<SubComment> subCommentRepository)
         {
             _repository = repository;
             _mapper = mapper;
@@ -35,6 +36,7 @@ namespace Forum.Application.Services
             _postStatusRepository = postStatusRepository;
             _updatePostValidator = updatePostValidator;
             _commentRepository = commentRepository;
+            _subCommentRepository = subCommentRepository;
         }
 
         public async Task<ApiResponse<object>> CreatePost(CreatePostDto postDto)
@@ -85,6 +87,7 @@ namespace Forum.Application.Services
                 var category = await _categoryRepository.GetAllAsync();
                 var poststatus = await _postStatusRepository.GetAllAsync();
                 var comments = await _commentRepository.GetAllAsync();
+                var subcommnet = await _subCommentRepository.GetAllAsync();
                 if (posts ==null || posts.Count == 0)
                 {
                     return new ApiResponse<List<ResultPostDto>> { Status = true, Data = null,Info="Post Bulunamadi." };
