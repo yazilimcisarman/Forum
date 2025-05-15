@@ -16,5 +16,6 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<object>> CreateComment(CreateCommentDto Comment);
         Task<ApiResponse<object>> UpdateComment(UpdateCommentDto Comment);
         Task<ApiResponse<object>> DeleteComment(int id);
+        Task<ApiResponse<List<ResultCommentsComponentDto>>> GetAllCommentsByPostId(int postId);
     }
 }

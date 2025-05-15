@@ -1,4 +1,5 @@
 ﻿using Forum.Application.Dtos.IdentityDtos;
+using Forum.Application.Dtos.UserDtos;
 using Forum.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using System;
@@ -18,5 +19,6 @@ namespace Forum.Application.Interfaces.Repositories
         Task<IdentityResult> DeleteUserAsync(string userId);
         Task<SignInResult> LoginAsync(LoginDto dto);
         Task LogOutAsync();
+        Task<bool> CheckUser(LoginDto dto);
     }
 }

@@ -7,12 +7,12 @@
             <div class="card shadow">
                 <div class="card-body p-5">
                     <h2 class="text-center mb-4">Giriş Yap</h2>
-                    <form id="loginForm" class="needs-validation" novalidate>
+                    <form class="needs-validation" novalidate method="post" action="/accounts/SendLogin">
                         <div class="mb-3">
                             <label for="email" class="form-label">E-posta Adresi</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-                                <input type="email" class="form-control" id="email" required>
+                                <input type="email" class="form-control" id="email" required name="email">
                             </div>
                             <div class="invalid-feedback">
                                 Lütfen geçerli bir e-posta adresi girin.
@@ -22,7 +22,7 @@
                             <label for="password" class="form-label">Şifre</label>
                             <div class="input-group">
                                 <span class="input-group-text"><i class="fas fa-lock"></i></span>
-                                <input type="password" class="form-control" id="password" required>
+                                <input type="password" class="form-control" id="password" required name="password">
                                 <button class="btn btn-outline-secondary" type="button" id="togglePassword">
                                     <i class="fas fa-eye"></i>
                                 </button>

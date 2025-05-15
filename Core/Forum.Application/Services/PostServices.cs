@@ -25,8 +25,9 @@ namespace Forum.Application.Services
         private readonly IMapper _mapper;
         private readonly IValidator<CreatePostDto> _createPostValidator;
         private readonly IValidator<UpdatePostDto> _updatePostValidator;
+        private readonly IPostRepository _postRepository;
 
-        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository, IGenericRepository<SubComment> subCommentRepository)
+        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository, IGenericRepository<SubComment> subCommentRepository, IPostRepository postRepository)
         {
             _repository = repository;
             _mapper = mapper;
@@ -37,6 +38,7 @@ namespace Forum.Application.Services
             _updatePostValidator = updatePostValidator;
             _commentRepository = commentRepository;
             _subCommentRepository = subCommentRepository;
+            _postRepository = postRepository;
         }
 
         public async Task<ApiResponse<object>> CreatePost(CreatePostDto postDto)
@@ -101,6 +103,44 @@ namespace Forum.Application.Services
             }
         }
 
+        //public async Task<ApiResponse<List<ResultPostDto>>> GetAllPostsInclude()
+        //{
+        //    try
+        //    {
+        //        var posts = await _repository.GetAllAsyncInclude(
+        //            query =>
+        //            query.Include(x => x.User)
+        //                 .Include(x => x.Category)
+        //                 .Include(x => x.Status)
+        //                 .Include(x => x.Comments)
+        //                    .ThenInclude(c => c.SubComments)
+        //        );
+
+        //        if (posts == null || posts.Count == 0)
+        //        {
+        //            return new ApiResponse<List<ResultPostDto>>
+        //            {
+        //                Status = true,
+        //                Data = null,
+        //                Info = "Post bulunamadı."
+        //            };
+        //        }
+
+        //        var result = _mapper.Map<List<ResultPostDto>>(posts);
+
+        //        return new ApiResponse<List<ResultPostDto>>
+        //        {
+        //            Status = true,
+        //            Data = result
+        //        };
+        //    }
+        //    catch (Exception ex)
+        //    {
+
+        //        return new ApiResponse<List<ResultPostDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
+        //    }
+        //}
+
         public async Task<ApiResponse<List<ResultPostDto>>> GetCountPosts(int count)
         {
             try
@@ -143,6 +183,29 @@ namespace Forum.Application.Services
             catch (Exception ex)
             {
                 return new ApiResponse<GetByIdPostDto> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        public async Task<ApiResponse<List<DetailPostByCategoryDto>>> GetTwoPostsByCategoryId(int categoryId)
+        {
+            try
+            {
+                var posts = await _postRepository.GetTwoPostsByCategoryIdAsync(categoryId);
+                //var users = await _userRepository.GetAllAsync();
+                //var category = await _categoryRepository.GetAllAsync();
+                //var poststatus = await _postStatusRepository.GetAllAsync();
+                //var comments = await _commentRepository.GetAllAsync();
+                //var subcommnet = await _subCommentRepository.GetAllAsync();
+                if (posts == null || posts.Count == 0)
+                {
+                    return new ApiResponse<List<DetailPostByCategoryDto>> { Status = true, Data = null, Info = "Post Bulunamadi." };
+                }
+                var result = _mapper.Map<List<DetailPostByCategoryDto>>(posts);
+                return new ApiResponse<List<DetailPostByCategoryDto>> { Status = true, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<List<DetailPostByCategoryDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
             }
         }
 

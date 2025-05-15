@@ -76,5 +76,15 @@ namespace Forum.API.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("GetBestUsersTakeThree")]
+        public async Task<IActionResult> GetBestUsersTakeThree()
+        {
+            var result = await _userServices.GetBestUsersTakeThree();
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

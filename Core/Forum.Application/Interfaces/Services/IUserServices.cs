@@ -1,4 +1,5 @@
-﻿using Forum.Application.Dtos.ResponseDtos;
+﻿using Forum.Application.Dtos.IdentityDtos;
+using Forum.Application.Dtos.ResponseDtos;
 using Forum.Application.Dtos.UserDtos;
 using Forum.Domain.Entities;
 using System;
@@ -16,5 +17,7 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<object>>CreateUser(CreateUserDto user);
         Task<ApiResponse<object>> UpdateUser(UpdateUserDto user);
         Task<ApiResponse<object>> DeleteUser(int id);
+        Task<ApiResponse<List<BestUsersTakeThreeDto>>> GetBestUsersTakeThree();
+        //Task<ApiResponse<object>> CheckUser(LoginDto dto);
     }
 }

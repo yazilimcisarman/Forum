@@ -79,5 +79,25 @@ namespace Forum.API.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("GetSampleTopicsTwoCount")]
+        public async Task<IActionResult> GetSampleTopicsTwoCount(int categoryId)
+        {
+            var result = await _postServices.GetTwoPostsByCategoryId(categoryId);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+        //[HttpGet("GetAllPostsInclude")]
+        //public async Task<IActionResult> GetAllPostsInclude()
+        //{
+        //    var result = await _postServices.GetAllPostsInclude();
+        //    if (result.Status)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest(result);
+        //}
     }
 }

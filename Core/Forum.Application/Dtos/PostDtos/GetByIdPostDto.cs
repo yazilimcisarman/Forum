@@ -1,5 +1,6 @@
 ﻿using Forum.Application.Dtos.CommentDtos;
 using Forum.Domain.Entities;
+using Humanizer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,8 @@ namespace Forum.Application.Dtos.PostDtos
         public int Id { get; set; }
         public string Title { get; set; } // Başlık
         public string Content { get; set; } // İçerik
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
+        public string CreatedAtHumanize => CreatedAt.Humanize();
         public int UserId { get; set; }
         public int CategoryId { get; set; } // Kategoriye bağlı
         public int StatusId { get; set; } // Post durumu (Gönderildi, Hazır, Yayınlandı vb.)

@@ -1,5 +1,19 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 var builder = WebApplication.CreateBuilder(args);
 
+//builder.Services.AddRazorPages(options =>
+//{
+//    options.Conventions.AuthorizeFolder("/", "/Account");
+//    options.Conventions.AllowAnonymousToPage("/Account/Login");
+//});
+
+//burasini kaldirdim
+//builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+//    .AddCookie(options =>
+//    {
+//        options.LoginPath = "/Accounts/Login"; // Giriþ yapmadan eriþilmeye çalýþýldýðýnda yönlendirilecek sayfa
+//    });
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 builder.Services.AddMvc();

@@ -1,0 +1,24 @@
+﻿@using Forum.Application.Dtos.UserDtos
+@model List<BestUsersTakeThreeDto>
+
+<!-- En Aktif Kullanıcılar -->
+<div class="card mb-4">
+    <div class="card-header">
+        <h5 class="card-title mb-0">En Aktif Kullanıcılar</h5>
+    </div>
+    <div class="card-body">
+        <div class="list-group list-group-flush">
+            @foreach (var item in Model)
+            {
+                <a href="#" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">
+                    <div>
+                        <img src="~/forum/images/avatar.png" class="rounded-circle me-2" alt="Kullanıcı" width="40px" height="40px">
+                        @item.UserName
+                    </div>
+                    <span class="badge bg-primary rounded-pill">@item.PostCount</span>
+                </a>
+            }
+            
+        </div>
+    </div>
+</div>

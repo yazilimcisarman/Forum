@@ -1,4 +1,5 @@
 ﻿using Forum.Domain.Entities;
+using Humanizer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,7 +12,8 @@ namespace Forum.Application.Dtos.SubCommentDtos
     {
         public int Id { get; set; }
         public string Content { get; set; } // Yorum içeriği
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime CreatedAt { get; set; }
+        public string CreatedAtHumanize => CreatedAt.Humanize();
         public int? UserId { get; set; }
         public string Username { get; set; } // Kullanıcı adı
         public int CommentId { get; set; } // Bağlı olduğu ana yorum

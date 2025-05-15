@@ -67,5 +67,15 @@ namespace Forum.API.Controllers
             }
             return BadRequest(result);
         }
+        [HttpGet("GetCommentsByPostId")]
+        public async Task<IActionResult> GetCommentsByPostId(int postId)
+        {
+            var result = await _commentServices.GetAllCommentsByPostId(postId);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

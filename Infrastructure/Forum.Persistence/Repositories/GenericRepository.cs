@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,6 +51,6 @@ namespace Forum.Persistence.Repositories
         {
             return await _context.Set<T>().OrderDescending().Take(count).ToListAsync();
         }
-        
+
     }
 }

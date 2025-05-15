@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using FluentValidation;
+using Forum.Application.Dtos.IdentityDtos;
 using Forum.Application.Dtos.ResponseDtos;
 using Forum.Application.Dtos.UserDtos;
 using Forum.Application.Interfaces.Repositories;
 using Forum.Application.Interfaces.Services;
 using Forum.Domain.Entities;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using System;
 using System.Collections.Generic;
@@ -15,19 +17,21 @@ using System.Threading.Tasks;
 
 namespace Forum.Application.Services
 {
-    public class UserServices :IUserServices
+    public class UserServices : IUserServices
     {
         private readonly IGenericRepository<User> _userRepository;
         private readonly IMapper _mapper;
         private readonly IValidator<CreateUserDto> _validator;
         private readonly IValidator<UpdateUserDto> _updateValidator;
+        private readonly IUserRepository _userRepositoryCustom;
 
-        public UserServices(IGenericRepository<User> userRepository, IMapper mapper, IValidator<CreateUserDto> validator, IValidator<UpdateUserDto> updateValidator)
+        public UserServices(IGenericRepository<User> userRepository, IMapper mapper, IValidator<CreateUserDto> validator, IValidator<UpdateUserDto> updateValidator, IUserRepository userRepositoryCustom)
         {
             _userRepository = userRepository;
             _mapper = mapper;
             _validator = validator;
             _updateValidator = updateValidator;
+            _userRepositoryCustom = userRepositoryCustom;
         }
 
         // Get by Id
@@ -133,5 +137,35 @@ namespace Forum.Application.Services
                 return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = ex.Message };
             }
         }
+
+        public async Task<ApiResponse<List<BestUsersTakeThreeDto>>> GetBestUsersTakeThree()
+        {
+            try
+            {
+                var users = await _userRepositoryCustom.GetBestUsersTakeThree();
+                if (users.Count == 0 || users == null)
+                {
+                    return new ApiResponse<List<BestUsersTakeThreeDto>> { Status = true, Data = null, Info = "Kullanıcı Bulunamadı." };
+                }
+                var result = _mapper.Map<List<BestUsersTakeThreeDto>>(users);
+                return new ApiResponse<List<BestUsersTakeThreeDto>> { Status = true, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<List<BestUsersTakeThreeDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        //public async Task<ApiResponse<object>> CheckUser(LoginDto dto)
+        //{
+        //    try
+        //    {
+        //        var result = await _userRepositoryCustom.(dto);
+        //    }
+        //    catch (Exception ex )
+        //    {
+        //        return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = ex.Message };
+        //    }
+        //}
     }
 }

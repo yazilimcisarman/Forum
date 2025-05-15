@@ -1,4 +1,5 @@
 ﻿using Forum.Application.Dtos.IdentityDtos;
+using Forum.Application.Dtos.UserDtos;
 using Forum.Application.Interfaces.Repositories;
 using Forum.Domain.Entities;
 using Forum.Persistence.Context.Identity;
@@ -84,6 +85,16 @@ namespace Forum.Persistence.Repositories
         public async Task LogOutAsync()
         {
             await _signInManager.SignOutAsync();
+        }
+
+        public async Task<bool> CheckUser(LoginDto dto)
+        {
+            var user = await _userManager.FindByEmailAsync(dto.Email);
+            if (user == null)
+                return false;
+
+            var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, lockoutOnFailure: false);
+            return result.Succeeded;
         }
 
 

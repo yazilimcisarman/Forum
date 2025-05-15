@@ -34,18 +34,21 @@ namespace Forum.Application.Mappings
             CreateMap<User, UpdateUserDto>().ReverseMap();
             CreateMap<User, ResultUserDto>().ReverseMap();
             CreateMap<User, GetByIdUserDto>().ReverseMap();
+            CreateMap<User, BestUsersTakeThreeDto>().ReverseMap();
 
             CreateMap<Post, CreatePostDto>().ReverseMap();
             CreateMap<Post, UpdatePostDto>().ReverseMap();
             CreateMap<Post, ResultPostDto>().ReverseMap();
             CreateMap<Post, GetByIdPostDto>().ReverseMap();
             CreateMap<Post, CommentViewPostDto>().ReverseMap();
+            CreateMap<Post, DetailPostByCategoryDto>().ReverseMap();
 
             CreateMap<Comment, CreateCommentDto>().ReverseMap();
             CreateMap<Comment, UpdateCommentDto>().ReverseMap();
             CreateMap<Comment, ResultCommentDto>().ReverseMap();
             CreateMap<Comment, GetByIdCommentDto>().ReverseMap();
             CreateMap<Comment, PostViewCommentDto>().ReverseMap();
+            CreateMap<Comment, ResultCommentsComponentDto>().ReverseMap();
 
 
             CreateMap<SubComment, CreateSubCommentDto>().ReverseMap();

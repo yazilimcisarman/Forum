@@ -1,83 +1,124 @@
-using FluentValidation;
-using Forum.Application.Dtos.CategoryDtos;
-using Forum.Application.Interfaces.Repositories;
-using Forum.Application.Interfaces.Services;
-using Forum.Application.Mappings;
-using Forum.Application.Services;
-using Forum.Application.Validators;
-using Forum.Application.Validators.CategoryValidators;
-using Forum.Application.Validators.CommentValidators;
-using Forum.Application.Validators.PostStatuesValidators;
-using Forum.Application.Validators.PostValidators;
-using Forum.Application.Validators.SubCommentValidators;
-using Forum.Application.Validators.UserValidators;
+using Forum.API.Extensions;
 using Forum.Persistence.Context;
 using Forum.Persistence.Context.Identity;
-using Forum.Persistence.Repositories;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 using Scalar.AspNetCore;
+using Serilog;
+using Serilog.Events;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Serilog konfigürasyonu
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration)
+    .Enrich.FromLogContext()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
+    .WriteTo.MSSqlServer(
+        connectionString: builder.Configuration.GetConnectionString("DefaultConnection"),
+        sinkOptions: new Serilog.Sinks.MSSqlServer.MSSqlServerSinkOptions
+        {
+            TableName = "Logs",
+            AutoCreateSqlTable = true
+        },
+        restrictedToMinimumLevel: LogEventLevel.Information
+    )
+    .CreateLogger();
+
+builder.Host.UseSerilog((context, services, configuration) =>
+{
+    configuration
+        .ReadFrom.Configuration(context.Configuration)
+        .ReadFrom.Services(services)
+        .Enrich.FromLogContext()
+        .WriteTo.Console()
+        .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day)
+        .WriteTo.MSSqlServer(
+            connectionString: context.Configuration.GetConnectionString("DefaultConnection"),
+            sinkOptions: new Serilog.Sinks.MSSqlServer.MSSqlServerSinkOptions
+            {
+                TableName = "Logs",
+                AutoCreateSqlTable = true
+            },
+            restrictedToMinimumLevel: LogEventLevel.Information
+        );
+});
+//builder.Host.UseSerilog((context, services, configuration) =>
+//{
+//    configuration
+//        .ReadFrom.Configuration(context.Configuration)
+//        .ReadFrom.Services(services)
+//        .Enrich.FromLogContext()
+//        .WriteTo.Console()
+//        .WriteTo.File("Logs/log.txt", rollingInterval: RollingInterval.Day);
+//});
+
 builder.AddServiceDefaults();
 
-// Add services to the container.
 builder.Services.AddDbContext<ForumDbContext>();
-builder.Services.AddDbContext<ForumIdentityDbContext>();
+builder.Services.AddDbContext<ForumIdentityDbContext>(); 
 builder.Services.AddIdentity<ForumIdentityUser, ForumIdentityRole>()
     .AddEntityFrameworkStores<ForumIdentityDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddInfrastructureServices();
 builder.Services.AddControllers();
-builder.Services.AddScoped<UserManager<ForumIdentityUser>>();
-builder.Services.AddScoped<SignInManager<ForumIdentityUser>>();
-builder.Services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
-builder.Services.AddScoped<IIdentityRepository, IdentityRepository>();
-builder.Services.AddScoped<ICategoryRepository, CategoryRepository>();
-builder.Services.AddScoped<ICategoryServices, CategoryServices>();
-builder.Services.AddScoped<IPostStatusServices, PostStatusServices>();
-builder.Services.AddScoped<IUserServices, UserServices>();
-builder.Services.AddScoped<IAccountServices, AccountServices>();
-builder.Services.AddScoped<IPostServices, PostServices>();
-builder.Services.AddScoped<ICommentServices, CommentServices>();
-builder.Services.AddScoped<ISubCommentServices, SubCommentServices>();
-
-
-builder.Services.AddValidatorsFromAssemblyContaining<CreateCategoryDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<UpdateCategoryDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<CreatePostStatusDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<CreateUserDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<UpdateUserDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<CreatePostDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<UpdatePostDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<CreateCommentDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<UpdateCommentDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<CreateSubCommentDtoValidator>();
-builder.Services.AddValidatorsFromAssemblyContaining<UpdateSubCommentDtoValidator>();
-
-builder.Services.AddAutoMapper(typeof(GeneralMapping));
-
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+    .AddJwtBearer(opt =>
+    {
+        opt.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuer = true,
+            ValidateAudience = true,
+            ValidateLifetime = true,
+            ValidateIssuerSigningKey = true,
+            ValidIssuer = builder.Configuration["Jwt:Issuer"],
+            ValidAudience = builder.Configuration["Jwt:Audience"],
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]))
+        };
+    });
+
+builder.Services.AddEndpointsApiExplorer();
+
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
 
+
 app.MapDefaultEndpoints();
-builder.Services.AddEndpointsApiExplorer();
-// Configure the HTTP request pipeline.
+
 app.MapScalarApiReference(
-    opt => {
+    opt =>
+    {
         opt.Title = "Forum v1";
-        opt.Theme = ScalarTheme.BluePlanet;
+        opt.Theme = ScalarTheme.DeepSpace;
         opt.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.Http11);
     }
 );
 
 app.MapOpenApi();
+
 app.UseHttpsRedirection();
-
+app.UseSerilogRequestLogging(opts =>
+{
+    opts.EnrichDiagnosticContext = (diagnosticContext, httpContext) =>
+    {
+        diagnosticContext.Set("RequestPath", httpContext.Request.Path);
+        diagnosticContext.Set("RequestMethod", httpContext.Request.Method);
+        diagnosticContext.Set("StatusCode", httpContext.Response.StatusCode);
+        diagnosticContext.Set("UserName", httpContext.User.Identity?.Name ?? "Anonymous");
+    };
+});
+app.UseAuthentication();
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();

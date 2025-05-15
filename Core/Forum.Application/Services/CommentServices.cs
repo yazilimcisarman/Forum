@@ -27,8 +27,9 @@ namespace Forum.Application.Services
         private readonly IValidator<CreateCommentDto> _validator;
         private readonly IValidator<UpdateCommentDto> _updatevalidator;
         private readonly IMapper _mapper;
+        private readonly ICommentRepository _commentRepository2;
 
-        public CommentServices(IGenericRepository<Comment> commentRepository, IValidator<CreateCommentDto> validator, IMapper mapper, IValidator<UpdateCommentDto> updatevalidator, IGenericRepository<Post> postRepository, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IGenericRepository<SubComment> subCommentRepository)
+        public CommentServices(IGenericRepository<Comment> commentRepository, IValidator<CreateCommentDto> validator, IMapper mapper, IValidator<UpdateCommentDto> updatevalidator, IGenericRepository<Post> postRepository, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IGenericRepository<SubComment> subCommentRepository, ICommentRepository commentRepository2)
         {
             _commentRepository = commentRepository;
             _validator = validator;
@@ -39,6 +40,7 @@ namespace Forum.Application.Services
             _categoryRepository = categoryRepository;
             _postStatusRepository = postStatusRepository;
             _subCommentRepository = subCommentRepository;
+            _commentRepository2 = commentRepository2;
         }
 
         public async Task<ApiResponse<object>> CreateComment(CreateCommentDto Comment)
@@ -100,6 +102,30 @@ namespace Forum.Application.Services
             catch (Exception ex)
             {
                 return new ApiResponse<List<ResultCommentDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        public async Task<ApiResponse<List<ResultCommentsComponentDto>>> GetAllCommentsByPostId(int postId)
+        {
+            try
+            {
+                var comments = await _commentRepository2.GetAllCommentsByPostId(postId);
+                if (comments.Count == 0 || comments == null)
+                {
+                    return new ApiResponse<List<ResultCommentsComponentDto>> { Status = true, Data = null, Info = "Yorum Yok." };
+                }
+                //var posts = await _postRepository.GetAllAsync();
+                //var users = await _userRepository.GetAllAsync();
+                //var category = await _categoryRepository.GetAllAsync();
+                //var poststatus = await _postStatusRepository.GetAllAsync();
+
+                var result = _mapper.Map<List<ResultCommentsComponentDto>>(comments);
+                return new ApiResponse<List<ResultCommentsComponentDto>> { Status = true, Data = result };
+
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<List<ResultCommentsComponentDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
             }
         }
 
