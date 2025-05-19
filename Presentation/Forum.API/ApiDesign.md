@@ -1,4 +1,4 @@
-﻿![pexels-tranmautritam-948049.jpg](../../pexels-tranmautritam-948049.jpg)
+﻿![sarman.jpg](../../sarman.jpg)
 # API Tasarımı Rehberi
 API tasarımı, istemci ve geliştirici için kullanıcı dostu, güvenli ve verimli bir deneyim sunmanın temelidir. 
 Bu rehberde, bir API’nin nasıl tasarlanması gerektiğine ve HTTP yöntemlerinin doğru kullanımına dair yol gösterici bilgileri sizlerle paylaştım.
