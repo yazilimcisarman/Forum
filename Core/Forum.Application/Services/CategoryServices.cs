@@ -1,10 +1,13 @@
-﻿using FluentValidation;
+﻿using AutoMapper;
+using FluentValidation;
 using FluentValidation.Results;
 using Forum.Application.Dtos.CategoryDtos;
+using Forum.Application.Dtos.PostDtos;
 using Forum.Application.Dtos.ResponseDtos;
 using Forum.Application.Interfaces.Repositories;
 using Forum.Application.Interfaces.Services;
 using Forum.Domain.Entities;
+using Microsoft.AspNetCore.Http.Metadata;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,13 +23,17 @@ namespace Forum.Application.Services
         private readonly IValidator<CreateCategoryDto> _validator;
         private readonly IValidator<UpdateCategoryDto> _updateValidator;
         private readonly ICategoryRepository _categoryRepository2;
+        private readonly IPostRepository _postRepository;
+        private readonly IMapper _mapper;
 
-        public CategoryServices(IGenericRepository<Category> categoryRepository, IValidator<CreateCategoryDto> validator, IValidator<UpdateCategoryDto> updateValidator, ICategoryRepository categoryRepository2)
+        public CategoryServices(IGenericRepository<Category> categoryRepository, IValidator<CreateCategoryDto> validator, IValidator<UpdateCategoryDto> updateValidator, ICategoryRepository categoryRepository2, IPostRepository postRepository, IMapper mapper)
         {
             _categoryRepository = categoryRepository;
             _validator = validator;
             _updateValidator = updateValidator;
             _categoryRepository2 = categoryRepository2;
+            _postRepository = postRepository;
+            _mapper = mapper;
         }
 
         public async Task<ApiResponse<List<ResultCategoryDto>>> GetAllCategories()
@@ -47,7 +54,9 @@ namespace Forum.Application.Services
                         Id = category.Id,
                         Name = category.Name,
                         Description = category.Description,
-                        PostCount = category.PostCount
+                        PostCount = category.PostCount,
+                        ImageUrl = category.ImageUrl,
+                        ColorId = category.ColorId
                     });
                 }
 
@@ -68,11 +77,17 @@ namespace Forum.Application.Services
                 {
                     return new ApiResponse<GetByIdCategoryDto> { Status = true, Data = null, Info = "Kategori Bulunamadı." };
                 }
+                var posts = await _postRepository.GetPostByCategoryId(categoryId);
+                var mappost = _mapper.Map<List<CategoryDetailPostsDto>>(posts);
                 var result = new GetByIdCategoryDto
                 {
                     Id = category.Id,
                     Name = category.Name,
-                    Description= category.Description
+                    Description= category.Description,
+                    PostCount = category.PostCount,
+                    ImageUrl = category.ImageUrl,
+                    ColorId = category.ColorId,
+                    CategoryPosts = mappost
                 };
                 return new ApiResponse<GetByIdCategoryDto> { Status = true, Data = result };
             }
@@ -97,7 +112,9 @@ namespace Forum.Application.Services
                 {
                     Name = categoryDto.Name,
                     Description = categoryDto.Description,
-                    PostCount = 0
+                    PostCount = 0,
+                    ImageUrl = categoryDto.ImageUrl,
+                    ColorId = categoryDto.ColorId
                 };
                 
                 await _categoryRepository.AddAsync(category);
@@ -127,7 +144,9 @@ namespace Forum.Application.Services
                     Id = categoryDto.Id,
                     Name = categoryDto.Name,
                     Description = categoryDto.Description,
-                    PostCount = categoryDto.PostCount
+                    PostCount = categoryDto.PostCount,
+                    ImageUrl = categoryDto.ImageUrl,
+                    ColorId = categoryDto.ColorId
                 };
 
                 await _categoryRepository.UpdateAsync(category);
@@ -214,7 +233,8 @@ namespace Forum.Application.Services
                         Name = category.Name,
                         Description = category.Description,
                         PostCount = category.PostCount,
-                        ImageUrl = category.ImageUrl
+                        ImageUrl = category.ImageUrl,
+                        ColorId = category.ColorId
                     });
                 }
 

@@ -24,18 +24,28 @@ namespace Forum.Application.Services
         {
             try
             {
-                var checkuser = await _identityRepository.GetUserByEmailAsync(user.Email);
-                if (checkuser != null)
+                var existingUser = await _identityRepository.GetUserByEmailAsync(user.Email);
+                if (existingUser != null)
                 {
                     return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = "Kullanici Mevcut" };
+                }
+                var userNameCheck = await _identityRepository.GetUserByUserName(user.UserName);
+                if (userNameCheck != null)
+                {
+                    return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = "Kullanici adi Mevcut" };
                 }
 
                 var result = await _identityRepository.CreateUserAsync(user);
                 if (result.Succeeded)
                 {
-                    return new ApiResponse<object> { Status = true, Data = null, Info = "Kullanici Olusturuldu." };
+                    var roleresult = await _identityRepository.AddUserToRoleAsync(user.Email, "test");
+                    if (!roleresult)
+                    {
+                        return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = "Kullanici Rol Atamasi Yapilamadi" };
+                    }
+                    return new ApiResponse<object> { Status = true, Data = null, Info = "Kullanici Olusturuldu. Role atandi" };
                 }
-                return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = string.Join(", ", result.Errors.Select(e => e.Description))}; 
+                return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = string.Join(", ", result.Errors.Select(e => e.Description)) };
             }
             catch (Exception ex)
             {
@@ -57,9 +67,9 @@ namespace Forum.Application.Services
                 {
                     return new ApiResponse<GetByIdIdentityUser> { Status = true, Data = null, Info = "Kullanici Bulunamadi" };
                 }
-                return new ApiResponse<GetByIdIdentityUser> { Status=true,Data = user };
+                return new ApiResponse<GetByIdIdentityUser> { Status = true, Data = user };
             }
-            catch (Exception ex )
+            catch (Exception ex)
             {
                 return new ApiResponse<GetByIdIdentityUser> { Status = false, Data = null, ErrorMessage = ex.Message };
             }
@@ -91,7 +101,7 @@ namespace Forum.Application.Services
                 {
                     return new ApiResponse<object> { Status = true, Data = null, Info = "Kullanici Girisi Basarili" };
                 }
-                return new ApiResponse<object> { Status=false, Data = null,ErrorMessage="Kullanici girisi hatasi, email ve sifrenizi kontrol ediniz"};
+                return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = "Kullanici girisi hatasi, email ve sifrenizi kontrol ediniz" };
             }
             catch (Exception ex)
             {

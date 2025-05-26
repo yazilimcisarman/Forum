@@ -19,5 +19,8 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<List<ResultPostDto>>> GetCountPosts(int count);
         //Task<ApiResponse<List<ResultPostDto>>> GetAllPostsInclude();
         Task<ApiResponse<List<DetailPostByCategoryDto>>> GetTwoPostsByCategoryId(int categoryId);
+        Task<ApiResponse<List<ResultPostDto>>> GetUserPosts(string userId);
+        Task<ApiResponse<List<ResultPostDto>>> GetPostByCategoryId(int categroyId);
+        
     }
 }

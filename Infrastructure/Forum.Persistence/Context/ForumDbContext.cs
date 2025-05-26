@@ -21,6 +21,9 @@ namespace Forum.Persistence.Context
         public DbSet<PostStatus> PostStatuses { get; set; }
         public DbSet<SubComment> SubComments { get; set; }
         public DbSet<User> Users { get; set; }
+        public DbSet<PostLike> PostLikes { get; set; }
+        public DbSet<PostView> PostViews { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

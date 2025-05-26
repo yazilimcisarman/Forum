@@ -32,6 +32,8 @@ namespace Forum.Persistence.Extensions
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
             services.AddScoped<IPostRepository, PostRepository>();
+            services.AddScoped<IPostLikeRepository, PostLikeRepository>();
+            services.AddScoped<IPostViewRepository, PostViewRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<ICategoryServices, CategoryServices>();
             services.AddScoped<IPostStatusServices, PostStatusServices>();
@@ -41,6 +43,8 @@ namespace Forum.Persistence.Extensions
             services.AddScoped<ICommentServices, CommentServices>();
             services.AddScoped<ISubCommentServices, SubCommentServices>();
             services.AddScoped<IAuthServices, AuthServices>();
+            services.AddScoped<IPostLikeService, PostLikeService>();
+            services.AddScoped<IPostViewService, PostViewService>();
 
 
             services.AddValidatorsFromAssemblyContaining<CreateCategoryDtoValidator>();

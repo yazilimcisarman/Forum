@@ -42,6 +42,7 @@ namespace Forum.Application.Mappings
             CreateMap<Post, GetByIdPostDto>().ReverseMap();
             CreateMap<Post, CommentViewPostDto>().ReverseMap();
             CreateMap<Post, DetailPostByCategoryDto>().ReverseMap();
+            CreateMap<Post, CategoryDetailPostsDto>().ReverseMap();
 
             CreateMap<Comment, CreateCommentDto>().ReverseMap();
             CreateMap<Comment, UpdateCommentDto>().ReverseMap();

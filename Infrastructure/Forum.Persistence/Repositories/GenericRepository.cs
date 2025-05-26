@@ -13,10 +13,12 @@ namespace Forum.Persistence.Repositories
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly ForumDbContext _context;
+        protected readonly DbSet<T> _dbSet;
 
         public GenericRepository(ForumDbContext context)
         {
             _context = context;
+            _dbSet = context.Set<T>();
         }
 
         public async Task<T> GetByIdAsync(int id)
@@ -52,5 +54,9 @@ namespace Forum.Persistence.Repositories
             return await _context.Set<T>().OrderDescending().Take(count).ToListAsync();
         }
 
+        public IQueryable<T> Query()
+        {
+            return _context.Set<T>().AsQueryable();
+        }
     }
 }

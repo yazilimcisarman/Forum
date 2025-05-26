@@ -1,4 +1,5 @@
 ﻿using Forum.Application.Dtos.CommentDtos;
+using Forum.Application.Dtos.PostDtos;
 using Forum.Application.Dtos.ResponseDtos;
 using Forum.Application.Dtos.UserDtos;
 using System;
@@ -17,5 +18,6 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<object>> UpdateComment(UpdateCommentDto Comment);
         Task<ApiResponse<object>> DeleteComment(int id);
         Task<ApiResponse<List<ResultCommentsComponentDto>>> GetAllCommentsByPostId(int postId);
+        Task<ApiResponse<List<ResultCommentDto>>> GetUserComments(string userId);
     }
 }

@@ -22,7 +22,7 @@ builder.Services.AddHttpClient("api", client =>
 {
     client.BaseAddress = new Uri("https://localhost:7123/api/");
 });
-
+builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

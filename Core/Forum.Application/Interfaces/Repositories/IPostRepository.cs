@@ -7,8 +7,11 @@ using System.Threading.Tasks;
 
 namespace Forum.Application.Interfaces.Repositories
 {
-    public interface IPostRepository
+    public interface IPostRepository : IGenericRepository<Post>
     {
         Task<List<Post>> GetTwoPostsByCategoryIdAsync(int categoryId);
+        Task<List<Post>> GetUserPosts(string userId);
+        Task<List<Post>> GetPostByCategoryId(int categoryId);
+        //Task<List<Post>> GetPostsByUserIdAsync(string userId);
     }
 }

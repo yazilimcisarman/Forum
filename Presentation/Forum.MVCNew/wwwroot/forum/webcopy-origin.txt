@@ -1,0 +1,148 @@
+Uri: https://fonts.googleapis.com/css?family=Krub:400,500,600
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\css-1
+Content Type: text/css
+
+Uri: https://fonts.gstatic.com/s/krub/v10/sZlEdRyC6CRYZp4-GLZyQw.ttf
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\s\krub\v10\sZlEdRyC6CRYZp4-GLZyQw.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/krub/v10/sZlEdRyC6CRYZrI5GLZyQw.ttf
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\s\krub\v10\sZlEdRyC6CRYZrI5GLZyQw.ttf
+Content Type: font/ttf
+
+Uri: https://fonts.gstatic.com/s/krub/v10/sZlLdRyC6CRYbkEaCA.ttf
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\s\krub\v10\sZlLdRyC6CRYbkEaCA.ttf
+Content Type: font/ttf
+
+Uri: https://forum19.azyrustemplates.com/
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\index.htm
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/css/style.css
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\css\style.css
+Content Type: text/css
+
+Uri: https://forum19.azyrustemplates.com/error404.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\error404.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/favicon/favicon.ico
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\favicon\favicon.ico
+Content Type: image/x-icon
+
+Uri: https://forum19.azyrustemplates.com/images/logo.png
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\logo.png
+Content Type: image/png
+
+Uri: https://forum19.azyrustemplates.com/images/single-topic-img01.jpg
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\single-topic-img01.jpg
+Content Type: image/jpeg
+
+Uri: https://forum19.azyrustemplates.com/images/single-topic-img03.jpg
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\single-topic-img03.jpg
+Content Type: image/jpeg
+
+Uri: https://forum19.azyrustemplates.com/images/single-topic-img04.jpg
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\single-topic-img04.jpg
+Content Type: image/jpeg
+
+Uri: https://forum19.azyrustemplates.com/images/single-topic-img05.jpg
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\single-topic-img05.jpg
+Content Type: image/jpeg
+
+Uri: https://forum19.azyrustemplates.com/images/single-topic-img06.jpg
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\single-topic-img06.jpg
+Content Type: image/jpeg
+
+Uri: https://forum19.azyrustemplates.com/images/single-topic-img07.jpg
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\single-topic-img07.jpg
+Content Type: image/jpeg
+
+Uri: https://forum19.azyrustemplates.com/images/single-topic-img08.jpg
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\images\single-topic-img08.jpg
+Content Type: image/jpeg
+
+Uri: https://forum19.azyrustemplates.com/index.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\index.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/js/bundle.js
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\js\bundle.js
+Content Type: application/x-javascript
+
+Uri: https://forum19.azyrustemplates.com/messages-compose.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\messages-compose.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/messages-page.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\messages-page.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-categories-single.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-categories-single.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-categories.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-categories.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-create-topic.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-create-topic.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-login.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-login.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-signup.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-signup.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-single-topic.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-single-topic.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-single-user.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-single-user.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-single_categories.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-single_categories.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-single_followers.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-single_followers.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-single_replies.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-single_replies.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-single_settings.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-single_settings.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-single_threads.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-single_threads.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-tabs.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-tabs.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/page-tabs_guidelines.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\page-tabs_guidelines.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/_demo_modal-advancedSearch.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\_demo_modal-advancedSearch.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/_demo_modal-age-confirmation.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\_demo_modal-age-confirmation.html
+Content Type: text/html
+
+Uri: https://forum19.azyrustemplates.com/_demo_modal-level-up.html
+File Name: C:\Downloaded Web Sites\forum19.azyrustemplates.com\_demo_modal-level-up.html
+Content Type: text/html
+

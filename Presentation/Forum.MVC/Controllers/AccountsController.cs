@@ -29,14 +29,24 @@ namespace Forum.MVC.Controllers
                 "application/json"
             );
 
-            var response = await _httpClient.PostAsync("Accounts/Login", jsonContent);
+            var response = await _httpClient.PostAsync("Auth", jsonContent);
             var json = await response.Content.ReadAsStringAsync();
 
             var result = JsonConvert.DeserializeObject<ApiResponse<string>>(json); // string yerine token dönebilir
 
             if (result.Status)
             {
-                // Token'ı saklamak ya da işlem yapmak
+                //burasini servise al
+
+                HttpContext.Response.Cookies.Append("_t", result.Data, new CookieOptions
+                {
+                    HttpOnly = true, // JavaScript erişemesin, güvenlik için önemli
+                    Secure = true,   // HTTPS zorunluysa true olmalı
+                    SameSite = SameSiteMode.Strict, // CSRF için koruma
+                    Expires = DateTimeOffset.Now.AddDays(1) // Token süresi kadar geçerli
+                });
+
+                //#####################
                 return RedirectToAction("Index", "Profiles");
             }
 

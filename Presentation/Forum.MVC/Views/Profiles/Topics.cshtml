@@ -1,0 +1,90 @@
+﻿@using Forum.Application.Dtos.PostDtos
+@model List<ResultPostDto>
+<div class="hero-section text-center py-5 bg-light">
+    <div class="container">
+        <p class="lead mb-4">Yazilimci sarman hosgeldin</p>
+        <a href="/profiles/topics" class="btn btn-primary btn-lg">Yazılarım</a>
+        <a href="/profiles/comments" class="btn btn-primary btn-lg">Yorumlarım</a>
+        <a href="/profiles/changepassword" class="btn btn-primary btn-lg">Şifre Değiştir</a>
+    </div>
+</div>
+
+<div class="container py-5">
+    <!-- Filtreler -->
+    <div class="row mb-4">
+        <div class="col-md-12">
+            <div class="input-group">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                <input type="text" class="form-control" placeholder="Konu ara..." id="searchInput">
+            </div>
+        </div>
+        @*  <div class="col-md-6">
+            <div class="d-flex justify-content-md-end">
+                <select class="form-select w-auto me-2" id="categoryFilter">
+                    <option value="">Tüm Kategoriler</option>
+                    <option value="teknoloji">Teknoloji</option>
+                    <option value="bilim">Bilim</option>
+                    <option value="sanat">Sanat</option>
+                    <option value="spor">Spor</option>
+                    <option value="egitim">Eğitim</option>
+                    <option value="yasam">Yaşam</option>
+                </select>
+                <select class="form-select w-auto" id="sortFilter">
+                    <option value="popular">En Popüler</option>
+                    <option value="recent">En Yeni</option>
+                    <option value="comments">En Çok Yorum</option>
+                </select>
+            </div>
+        </div> *@
+    </div>
+
+    <!-- Konu Listesi -->
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- Konu 1 -->
+            @foreach (var item in Model)
+            {
+                <div class="card mb-4">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-start">
+                            <div>
+                                <h5 class="card-title mb-1">
+                                    <a href="/topics/detail?id=@item.Id" class="text-decoration-none">@item.Title</a>
+                                </h5>
+                                <p class="card-text text-muted mb-2">
+                                    <small>
+                                        <i class="fas fa-user me-1"></i> @item.User.Username
+                                        <i class="fas fa-clock ms-3 me-1"></i> @item.CreatedAt
+                                        <i class="fas fa-folder ms-3 me-1"></i> @item.Category.Name
+                                    </small>
+                                </p>
+                                <p class="card-text">@item.Content</p>
+                            </div>
+                            <div class="text-end">
+                                <div class="badge bg-primary mb-2">1.2K Görüntülenme</div>
+                                <div class="text-muted">
+                                    <small><i class="fas fa-comments me-1"></i> @item.Comments.Count Yorum</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <!-- Sayfalama -->
+            <nav aria-label="Sayfalama">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item disabled">
+                        <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
+                    </li>
+                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item">
+                        <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+    </div>
+</div>

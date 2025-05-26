@@ -11,6 +11,8 @@ namespace Forum.Application.Dtos.UserDtos
         public int Id { get; set; }
         public string UserIdentityId { get; set; } //identity icin
         public string Username { get; set; } // Kullanıcı adı (Identity ile eşleşecek)
+        public string? Name { get; set; }
+        public string? Surname { get; set; }
         public string? ProfilePictureUrl { get; set; } // Profil resmi
         public bool CanPost { get; set; } = true; // Post atma yetkisi
         public string Email { get; set; }

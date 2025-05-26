@@ -1,4 +1,5 @@
 using Forum.API.Extensions;
+using Forum.API.Models;
 using Forum.Persistence.Context;
 using Forum.Persistence.Context.Identity;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -66,8 +67,12 @@ builder.Services.AddIdentity<ForumIdentityUser, ForumIdentityRole>()
 
 builder.Services.AddInfrastructureServices();
 builder.Services.AddControllers();
-builder.Services.AddOpenApi();
+builder.Services.AddAuthorization();
 
+builder.Services.AddOpenApi(opt =>
+{
+    opt.AddDocumentTransformer<BearerSecuritySchemeTransformer>();
+});
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

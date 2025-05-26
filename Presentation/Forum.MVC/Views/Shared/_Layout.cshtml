@@ -1,4 +1,8 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var token = Context.Request.Cookies["_t"];
+    var isLoggedIn = !string.IsNullOrEmpty(token);
+}
+<!DOCTYPE html>
 <html lang="tr">
 <head>
     <meta charset="UTF-8">
@@ -37,15 +41,21 @@
                     </li>
                 </ul>
                 <div class="d-flex">
-                    <a href="/accounts/login" class="btn btn-outline-light me-2">Giriş Yap</a>
-                    <a href="/accounts/register" class="btn btn-light">Kayıt Ol</a>
+                    @if (isLoggedIn)
+                    {
+                        <a href="/profiles" class="btn btn-outline-light me-2">Profil</a>
+                        <a href="/accounts/logout" class="btn btn-light">Çıkış Yap</a>
+                    }
+                    else
+                    {
+                        <a href="/accounts/login" class="btn btn-outline-light me-2">Giriş Yap</a>
+                        
+                    }
                 </div>
             </div>
         </div>
     </nav>
-
             @RenderBody()
-
     <!-- Footer -->
     <footer class="bg-dark text-light py-4">
         <div class="container">

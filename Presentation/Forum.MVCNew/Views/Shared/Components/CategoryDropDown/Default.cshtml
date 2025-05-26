@@ -1,0 +1,13 @@
+﻿@using Forum.Application.Dtos.CategoryDtos
+@model List<ResultCategoryDto>
+
+<div class="form-group">
+    <label for="inputTopicTitle">Kategori</label>
+    <select class="form-control">
+        <option value="Select">Kategori Seçiniz</option>
+        @foreach (var item in Model)
+        {
+            <option value="@item.Id">@item.Name</option>
+        }
+    </select>
+</div>

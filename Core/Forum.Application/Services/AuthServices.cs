@@ -26,16 +26,54 @@ namespace Forum.Application.Services
             _identityRepository = identityRepository;
         }
 
+        public async Task<ApiResponse<object>> AddRoleToUser(string email)
+        {
+            try
+            {
+                var result = await _identityRepository.AddUserToRoleAsync(email, "user");
+                if (!result)
+                {
+                    return new ApiResponse<object> { Status = false, Data = null, Info = "Kullanıcı Rol Ataması Yapılamadı." };
+                }
+                return new ApiResponse<object> { Status = true, Data = null, Info = "Kullanıcı Rol Ataması Yapıldı." };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
         public async Task<ApiResponse<object>> CheckUser(LoginDto dto)
         {
             try
             {
                 var result = await _identityRepository.CheckUser(dto);
-                return new ApiResponse<object> { Status = result, Data = result, Info = "Kullanıcı Girişi Başarılı." };
+                if (!result)
+                {
+                    return new ApiResponse<object> { Status = false, Data = null, Info = "Kullanıcı Girişi Başarısız." };
+                }
+                return new ApiResponse<object> { Status = true, Data = null, Info = "Kullanıcı Girişi Başarılı." };
             }
             catch (Exception ex)
             {
                 return new ApiResponse<object> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        public async Task<ApiResponse<object>> CreateRole(string roleName)
+        {
+            try
+            {
+                var result = await _identityRepository.CreateRoleAsync(roleName);
+                if (!result)
+                {
+                    return new ApiResponse<object> { Status = false, Data = null, Info = "Rol Oluşturulamadı." };
+                }
+                return new ApiResponse<object> { Status = true, Data = null, Info = "Rol Oluşturuldu." };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<object> { Status = false, Data = null, Info = ex.Message };
             }
         }
 
@@ -45,11 +83,13 @@ namespace Forum.Application.Services
             {
                 var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]));
                 var credentials = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
-
+                var user = await _identityRepository.GetUserByEmailAsync(dto.Email);
                 var claims = new[]
                 {
-                     new Claim(JwtRegisteredClaimNames.Sub,dto.Email), //buraya user id atamasi yapilacak
+                     new Claim(JwtRegisteredClaimNames.Sub,user.UserName), //buraya user id atamasi yapilacak
                      //new Claim(ClaimTypes.Role,role),
+                     new Claim("_u",user.Id ),
+                     new Claim("_e",user.Email ),
                      new Claim("role","admin"),
                      new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                  };

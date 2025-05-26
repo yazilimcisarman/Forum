@@ -6,6 +6,7 @@ using Forum.Persistence.Context.Identity;
 using Microsoft.AspNetCore.Identity;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,11 +17,13 @@ namespace Forum.Persistence.Repositories
     {
         private readonly UserManager<ForumIdentityUser> _userManager;  // ASP.NET Core dentity UserManager
         private readonly SignInManager<ForumIdentityUser> _signInManager; // ASP.NET Core Identity SignInManager
+        private readonly RoleManager<ForumIdentityRole> _roleManager; // ASP.NET Core Identity RoleManager
 
-        public IdentityRepository(UserManager<ForumIdentityUser> userManager, SignInManager<ForumIdentityUser> signInManager)
+        public IdentityRepository(UserManager<ForumIdentityUser> userManager, SignInManager<ForumIdentityUser> signInManager, RoleManager<ForumIdentityRole> roleManager)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _roleManager = roleManager;
         }
 
         public async Task<IdentityResult> CreateUserAsync(RegisterDto dto)
@@ -33,7 +36,10 @@ namespace Forum.Persistence.Repositories
                 UserName = dto.UserName,
 
             };
+            
             var result = await _userManager.CreateAsync(identityuser, dto.Password);
+            
+
             return result;
         }
 
@@ -95,6 +101,59 @@ namespace Forum.Persistence.Repositories
 
             var result = await _signInManager.CheckPasswordSignInAsync(user, dto.Password, lockoutOnFailure: false);
             return result.Succeeded;
+        }
+
+        public async Task<bool> CreateRoleAsync(string roleName)
+        {
+            if (string.IsNullOrWhiteSpace(roleName))
+                return false;
+
+            var roleExists = await _roleManager.RoleExistsAsync(roleName);
+            if (roleExists)
+                return false;
+
+            var result = await _roleManager.CreateAsync(new ForumIdentityRole{ Name= roleName });
+            if (result.Succeeded)
+                return true;
+
+            return false;
+        }
+
+        public async Task<bool> AddUserToRoleAsync(string email, string roleName)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return false;
+            var role = new ForumIdentityRole
+            {
+                Name = roleName,
+            };
+            var roleExists = await _roleManager.RoleExistsAsync(role.Name);
+            if (roleExists)
+            {
+                // Kullanıcıya rol ata
+                var addToRoleResult = await _userManager.AddToRoleAsync(user, role.Name);
+                if (addToRoleResult.Succeeded)
+                    return true;
+            }
+            return false;
+        }
+
+        public async Task<GetByIdIdentityUser> GetUserByUserName(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            if (user == null)
+                return null;
+
+            var result = new GetByIdIdentityUser
+            {
+                Email = user.Email,
+                Id = user.Id,
+                Name = user.Name,
+                Surname = user.Surname,
+                UserName = user.UserName,
+            };
+            return result;
         }
 
 

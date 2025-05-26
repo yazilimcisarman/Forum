@@ -15,5 +15,6 @@ namespace Forum.Application.Interfaces.Repositories
         Task UpdateAsync(T entity);
         Task DeleteAsync(T entity);
         Task<List<T>> GetTakeAsync(int count);
+        IQueryable<T> Query();
     }
 }

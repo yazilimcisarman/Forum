@@ -1,0 +1,109 @@
+﻿@{
+    ViewData["Title"] = "Sarman";
+}
+
+@using Forum.Application.Dtos.PostDtos
+@model List<ResultPostDto>
+
+<div class="tt-topic-list">
+    @await Component.InvokeAsync("TableTitle")
+
+   @*  <div class="tt-topic-alert tt-alert-default" role="alert">
+        <a href="#" target="_blank">4 yeni yazı</a>son zamanlarda eklendi, onları yüklemek için buraya tıklayın.
+    </div> *@
+   
+
+@*     <div class="tt-item tt-itemselect">
+        <div class="tt-col-avatar">
+            <svg class="tt-icon">
+                <use xlink:href="#icon-ava-k"></use>
+            </svg>
+        </div>
+        <div class="tt-col-description">
+            <h6 class="tt-title">
+                <a href="page-single-topic.html">
+                    <svg class="tt-icon">
+                        <use xlink:href="#icon-pinned"></use>
+                    </svg>Halloween Kostüm Yarışması 2018 2018
+                </a>
+            </h6>
+            <div class="row align-items-center no-gutters">
+                <div class="col-11">
+                    <ul class="tt-list-badge">
+                        <li class="show-mobile"><a href="#"><span class="tt-color01 tt-badge">siyaset politikası</span></a></li>
+                        <li><a href="#"><span class="tt-badge">yarışmalar</span></a></li>
+                        <li><a href="#"><span class="tt-badge">yazarlar</span></a></li>
+                    </ul>
+                </div>
+                <div class="col-1 ml-auto show-mobile">
+                    <div class="tt-value">1h</div>
+                </div>
+            </div>
+        </div>
+        <div class="tt-col-category"><span class="tt-color01 tt-badge">siyaset politikası</span></div>
+        <div class="tt-col-value hide-mobile">985</div>
+        <div class="tt-col-value tt-color-select hide-mobile">502</div>
+        <div class="tt-col-value hide-mobile">15.1k</div>
+        <div class="tt-col-value hide-mobile">1h</div>
+    </div> *@
+    @foreach (var post in Model)
+    {
+        <div class="tt-item">
+            <div class="tt-col-avatar">
+                <svg class="tt-icon">
+                    <use xlink:href="@($"#icon-ava-{post.User.Name.Substring(0,1).ToLower()}")"></use>
+                </svg>
+            </div>
+            <div class="tt-col-description">
+                <h6 class="tt-title"><a href="/topic/detail?topicsId=@post.Id">@post.Title</a></h6>
+                <div class="row align-items-center no-gutters">
+                    <div class="col-11">
+                        @* <ul class="tt-list-badge">
+                            <li class="show-mobile"><a href="#"><span class="tt-color04 tt-badge">@post.Category.Name</span></a></li>
+                            <li><a href="#"><span class="tt-badge">videohive</span></a></li>
+                            <li><a href="#"><span class="tt-badge">fotodu</span></a></li>
+                        </ul> *@
+                    </div>
+                    <div class="col-1 ml-auto show-mobile">
+                        @* <div class="tt-value">@post.CreatedAtHumanize</div> *@
+                    </div>
+                </div>
+            </div>
+            <div class="tt-col-category">
+                <a href="@Url.Action("Detail", "Category", new { categoryId = post.CategoryId })">
+                    <span class="@($"tt-color{post.Category.ColorId} tt-badge")">@post.Category.Name.ToLower()</span>
+                </a>
+            </div>
+
+            <div class="tt-col-value  hide-mobile">@post.LikeCount</div>
+            <div class="tt-col-value tt-color-select  hide-mobile">@post.CommentCount</div>
+            <div class="tt-col-value  hide-mobile">@post.ViewCount</div>
+            <div class="tt-col-value hide-mobile">@post.CreatedAtHumanize</div>
+        </div>
+
+    }
+    <div class="tt-item tt-item-popup">
+        <div class="tt-col-avatar">
+            <svg class="tt-icon">
+                <use xlink:href="#icon-ava-s"></use>
+            </svg>
+        </div>
+        <div class="tt-col-message">Burada yeni olduğunuz gibi görünüyor. Ücretsiz kayıt ol ve katkıda bulun.</div>
+        <div class="tt-col-btn">
+            <button type="button" class="btn btn-primary">Giriş</button>
+            <button type="button" class="btn btn-secondary">Kayıt</button>
+            <button type="button" class="btn-icon">
+               @*  <svg class="tt-icon">
+                    <use xlink:href="#icon-cancel"></use>
+                </svg> *@
+            </button>
+        </div>
+    </div>
+    <div class="tt-row-btn">
+        <button type="button" class="btn-icon js-topiclist-showmore" onclick="alert('yapma');">
+            <svg class="tt-icon">
+                <use xlink:href="#icon-load_lore_icon"></use>
+            </svg>
+        </button>
+    </div>
+</div>

@@ -11,6 +11,8 @@ namespace Forum.Application.Dtos.UserDtos
         public int Id { get; set; }
         public string UserIdentityId { get; set; }
         public string UserName { get; set; }
+        public string? Name { get; set; }
+        public string? Surname { get; set; }
         public string? ProfilePictureUrl { get; set; }
         public int PostCount { get; set; } = 12;
     }

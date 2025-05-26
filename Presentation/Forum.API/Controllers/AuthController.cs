@@ -1,6 +1,7 @@
 ﻿using Forum.Application.Dtos.IdentityDtos;
 using Forum.Application.Interfaces.Repositories;
 using Forum.Application.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,6 +28,26 @@ namespace Forum.API.Controllers
             }
             return BadRequest(result);
         }
-       
+        //[Authorize]
+        //[HttpPost("createRole")]
+        //public async Task<IActionResult> CreateRole(string roleName)
+        //{
+        //    var result = await _services.CreateRole(roleName);
+        //    if (result.Status)
+        //    {
+        //        return Ok(result);
+        //    }
+        //    return BadRequest(result);
+        //}
+        [HttpPost("addRoleToUser")]
+        public async Task<IActionResult> CreateRole(string email)
+        {
+            var result = await _services.AddRoleToUser(email);
+            if (result.Status)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
     }
 }

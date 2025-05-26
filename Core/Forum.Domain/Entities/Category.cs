@@ -13,5 +13,6 @@ namespace Forum.Domain.Entities
         public string Description { get; set; }
         public int PostCount { get; set; }
         public string ImageUrl { get; set; }
+        public string? ColorId { get; set; }
     }
 }

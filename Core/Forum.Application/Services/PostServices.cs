@@ -26,8 +26,11 @@ namespace Forum.Application.Services
         private readonly IValidator<CreatePostDto> _createPostValidator;
         private readonly IValidator<UpdatePostDto> _updatePostValidator;
         private readonly IPostRepository _postRepository;
+        private readonly IPostLikeRepository _postLikeRepository;
+        private readonly IGenericRepository<PostLike> _genericPostLikeRepository;
+        private readonly IGenericRepository<PostView> _genericPostViewRepository;
 
-        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository, IGenericRepository<SubComment> subCommentRepository, IPostRepository postRepository)
+        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository, IGenericRepository<SubComment> subCommentRepository, IPostRepository postRepository, IPostLikeRepository postLikeRepository, IGenericRepository<PostLike> genericPostLikeRepository,IGenericRepository<PostView> genericPostViewRepository)
         {
             _repository = repository;
             _mapper = mapper;
@@ -39,6 +42,9 @@ namespace Forum.Application.Services
             _commentRepository = commentRepository;
             _subCommentRepository = subCommentRepository;
             _postRepository = postRepository;
+            _postLikeRepository = postLikeRepository;
+            _genericPostLikeRepository = genericPostLikeRepository;
+            _genericPostViewRepository = genericPostViewRepository;
         }
 
         public async Task<ApiResponse<object>> CreatePost(CreatePostDto postDto)
@@ -90,11 +96,21 @@ namespace Forum.Application.Services
                 var poststatus = await _postStatusRepository.GetAllAsync();
                 var comments = await _commentRepository.GetAllAsync();
                 var subcommnet = await _subCommentRepository.GetAllAsync();
+                var like = await _genericPostLikeRepository.GetAllAsync();
+                var view = await _genericPostViewRepository.GetAllAsync();
                 if (posts ==null || posts.Count == 0)
                 {
                     return new ApiResponse<List<ResultPostDto>> { Status = true, Data = null,Info="Post Bulunamadi." };
                 }
                 var result = _mapper.Map<List<ResultPostDto>>(posts);
+                foreach (var postDto in result)
+                {
+                    postDto.LikeCount = like.Count(l => l.PostId == postDto.Id);
+                }
+                foreach (var postDto1 in result)
+                {
+                    postDto1.ViewCount = view.Count(l => l.PostId == postDto1.Id);
+                }
                 return new ApiResponse<List<ResultPostDto>> { Status = true, Data = result };
             }
             catch (Exception ex)
@@ -163,6 +179,11 @@ namespace Forum.Application.Services
             }
         }
 
+        public Task<ApiResponse<List<ResultPostDto>>> GetPostByCategoryId(int categroyId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ApiResponse<GetByIdPostDto>> GetPostById(int postId)
         {
             try
@@ -176,6 +197,7 @@ namespace Forum.Application.Services
                 var category = await _categoryRepository.GetByIdAsync(posts.CategoryId);
                 var poststatus = await _postStatusRepository.GetByIdAsync(posts.StatusId);
                 var comments = await _commentRepository.GetAllAsync();
+                var likecount = await _postLikeRepository.GetLikeCountAsync(postId);
 
                 var result = _mapper.Map<GetByIdPostDto>(posts);
                 return new ApiResponse<GetByIdPostDto> { Status = true, Data = result };
@@ -206,6 +228,29 @@ namespace Forum.Application.Services
             catch (Exception ex)
             {
                 return new ApiResponse<List<DetailPostByCategoryDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        public async Task<ApiResponse<List<ResultPostDto>>> GetUserPosts(string userId)
+        {
+            try
+            {
+                var posts = await _postRepository.GetUserPosts(userId);
+                var users = await _userRepository.GetAllAsync();
+                var category = await _categoryRepository.GetAllAsync();
+                var poststatus = await _postStatusRepository.GetAllAsync();
+                var comments = await _commentRepository.GetAllAsync();
+                var subcommnet = await _subCommentRepository.GetAllAsync();
+                if (posts == null || posts.Count == 0)
+                {
+                    return new ApiResponse<List<ResultPostDto>> { Status = true, Data = null, Info = "Post Bulunamadi." };
+                }
+                var result = _mapper.Map<List<ResultPostDto>>(posts);
+                return new ApiResponse<List<ResultPostDto>> { Status = true, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<List<ResultPostDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
             }
         }
 

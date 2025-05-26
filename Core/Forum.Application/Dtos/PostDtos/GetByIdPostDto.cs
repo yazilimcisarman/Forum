@@ -29,5 +29,10 @@ namespace Forum.Application.Dtos.PostDtos
         public Category Category { get; set; }
         public PostStatus Status { get; set; }
         public List<PostViewCommentDto> Comments { get; set; }
+
+        public int LikeCount { get; set; }
+        public bool IsLikedByCurrentUser { get; set; }
+        public int ViewCount { get; set; }
+        public int CommentCount => Comments?.Count ?? 0;
     }
 }

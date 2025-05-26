@@ -152,6 +152,11 @@ namespace Forum.Application.Services
             }
         }
 
+        public Task<ApiResponse<List<ResultCommentDto>>> GetUserComments(string userId)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<ApiResponse<object>> UpdateComment(UpdateCommentDto Comment)
         {
             try

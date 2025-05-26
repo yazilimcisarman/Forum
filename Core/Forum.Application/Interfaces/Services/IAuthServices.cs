@@ -13,5 +13,7 @@ namespace Forum.Application.Interfaces.Services
     {
         Task<ApiResponse<object>> GenerateToken(LoginDto dto);
         Task<ApiResponse<object>> CheckUser(LoginDto dto);
+        Task<ApiResponse<object>> CreateRole(string roleName);
+        Task<ApiResponse<object>> AddRoleToUser(string email);
     }
 }
