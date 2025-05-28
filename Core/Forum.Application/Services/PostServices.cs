@@ -22,15 +22,18 @@ namespace Forum.Application.Services
         private readonly IGenericRepository<PostStatus> _postStatusRepository;
         private readonly IGenericRepository<Comment> _commentRepository;
         private readonly IGenericRepository<SubComment> _subCommentRepository;
+        private readonly IPostLikeRepository _postLikeRepository;
         private readonly IMapper _mapper;
         private readonly IValidator<CreatePostDto> _createPostValidator;
         private readonly IValidator<UpdatePostDto> _updatePostValidator;
         private readonly IPostRepository _postRepository;
-        private readonly IPostLikeRepository _postLikeRepository;
+        
         private readonly IGenericRepository<PostLike> _genericPostLikeRepository;
         private readonly IGenericRepository<PostView> _genericPostViewRepository;
 
-        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository, IGenericRepository<SubComment> subCommentRepository, IPostRepository postRepository, IPostLikeRepository postLikeRepository, IGenericRepository<PostLike> genericPostLikeRepository,IGenericRepository<PostView> genericPostViewRepository)
+        public PostServices(IGenericRepository<Post> repository, IMapper mapper, IValidator<CreatePostDto> createPostValidator, IGenericRepository<User> userRepository, IGenericRepository<Category> categoryRepository, IGenericRepository<PostStatus> postStatusRepository, IValidator<UpdatePostDto> updatePostValidator, IGenericRepository<Comment> commentRepository, IGenericRepository<SubComment> subCommentRepository, IPostRepository postRepository,
+            IPostLikeRepository postLikeRepository, 
+            IGenericRepository<PostLike> genericPostLikeRepository,IGenericRepository<PostView> genericPostViewRepository)
         {
             _repository = repository;
             _mapper = mapper;

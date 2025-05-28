@@ -23,5 +23,6 @@ namespace Forum.Application.Interfaces.Repositories
         Task<bool> CheckUser(LoginDto dto);
         Task<bool> CreateRoleAsync(string roleName);
         Task<bool> AddUserToRoleAsync(string userId, string roleName);
+        //Task<IdentityUser> GetUserByUserName(string username);
     }
 }

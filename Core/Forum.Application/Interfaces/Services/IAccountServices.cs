@@ -18,5 +18,6 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<object>> DeleteUser(string userId);
         Task<ApiResponse<object>> Login(LoginDto dto);
         Task<ApiResponse<object>> LogOut();
+        Task<ApiResponse<GetByIdIdentityUser>> GetUserByUserName(string username);
     }
 }

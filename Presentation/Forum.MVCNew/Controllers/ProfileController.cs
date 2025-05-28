@@ -1,4 +1,5 @@
-﻿using Forum.Application.Interfaces.Services;
+﻿using Forum.Application.Dtos.ProfileDtos;
+using Forum.Application.Interfaces.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -17,7 +18,12 @@ namespace Forum.MVCNew.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var user = User.Identity.Name;
+            var result = new ProfileNameDto
+            {
+                Name = user
+            };
+            return View(result);
         }
         public async Task<IActionResult> MyPosts()
         {

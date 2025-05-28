@@ -9,7 +9,7 @@
                 Topluluğun gerçek gücünü ortaya çıkarmak için hesabınıza giriş yapın.
             </div>
         </a>
-        <form class="form-default">
+        <form class="form-default" method="post" action="/account/sendlogin">
            @*  <div class="form-group">
                 <label for="loginUserName">Username</label>
                 <input type="text" name="name" class="form-control" id="loginUserName" placeholder="azyrusmax">
@@ -20,7 +20,7 @@
             </div>
             <div class="form-group">
                 <label for="loginUserPassword">Şifre</label>
-                <input type="password" name="name" class="form-control" id="loginUserPassword" placeholder="************">
+                <input type="password" name="password" class="form-control" id="loginUserPassword" placeholder="************">
             </div>
             <div class="row">
                @*  <div class="col">
@@ -40,7 +40,8 @@
                 </div>
             </div>
             <div class="form-group">
-                <a href="#" class="btn btn-secondary btn-block">Giriş Yap</a>
+                @* <a href="#" class="btn btn-secondary btn-block">Giriş Yap</a> *@
+                <button type="submit" class="btn btn-secondary btn-block">Giriş Yap</button>
             </div>
            @*  <p>Or login with social network</p> *@
             @* <div class="row">

@@ -27,14 +27,21 @@ namespace Forum.Persistence.Extensions
         {
             services.AddScoped<UserManager<ForumIdentityUser>>();
             services.AddScoped<SignInManager<ForumIdentityUser>>();
+
+
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+
+
             services.AddScoped<IIdentityRepository, IdentityRepository>();
             services.AddScoped<ICategoryRepository, CategoryRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IPostRepository, PostRepository>();
             services.AddScoped<IPostLikeRepository, PostLikeRepository>();
             services.AddScoped<IPostViewRepository, PostViewRepository>();
             services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IPostRepository, PostRepository>();
+
+
+
             services.AddScoped<ICategoryServices, CategoryServices>();
             services.AddScoped<IPostStatusServices, PostStatusServices>();
             services.AddScoped<IUserServices, UserServices>();

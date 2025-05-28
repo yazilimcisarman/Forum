@@ -2,6 +2,7 @@
 using Forum.Application.Dtos.ResponseDtos;
 using Forum.Application.Interfaces.Repositories;
 using Forum.Application.Interfaces.Services;
+using Forum.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -80,6 +81,23 @@ namespace Forum.Application.Services
             try
             {
                 var user = await _identityRepository.GetUserByIdAsync(userId);
+                if (user == null)
+                {
+                    return new ApiResponse<GetByIdIdentityUser> { Status = true, Data = null, Info = "Kullanici Bulunamadi" };
+                }
+                return new ApiResponse<GetByIdIdentityUser> { Status = true, Data = user };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<GetByIdIdentityUser> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
+        public async Task<ApiResponse<GetByIdIdentityUser>> GetUserByUserName(string username)
+        {
+            try
+            {
+                var user = await _identityRepository.GetUserByUserName(username);
                 if (user == null)
                 {
                     return new ApiResponse<GetByIdIdentityUser> { Status = true, Data = null, Info = "Kullanici Bulunamadi" };
