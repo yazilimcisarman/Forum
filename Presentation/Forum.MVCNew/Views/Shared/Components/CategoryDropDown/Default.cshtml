@@ -3,8 +3,8 @@
 
 <div class="form-group">
     <label for="inputTopicTitle">Kategori</label>
-    <select class="form-control">
-        <option value="Select">Kategori Seçiniz</option>
+    <select class="form-control" name="categoryId" id="categoryId">
+        <option value="0">Kategori Seçiniz</option>
         @foreach (var item in Model)
         {
             <option value="@item.Id">@item.Name</option>

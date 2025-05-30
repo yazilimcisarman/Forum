@@ -10,5 +10,6 @@ namespace Forum.Application.Interfaces.Repositories
     public interface ICommentRepository
     {
         Task<List<Comment>> GetAllCommentsByPostId(int postId);
+        Task<List<Comment>> GetUserComments(string userId);
     }
 }

@@ -48,6 +48,8 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
     });
 builder.Services.AddHttpContextAccessor();
 var app = builder.Build();
+app.UseStatusCodePagesWithReExecute("/Error/{0}");
+app.UseExceptionHandler("/Error/500"); // 500 ve global exception
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())

@@ -2,16 +2,16 @@
     <h1 class="tt-title-border">
        Yeni Konu Oluştur
     </h1>
-    <form class="form-default form-create-topic">
+    <form class="form-default form-create-topic" method="post" action="/topic/CreatePost" onsubmit="return validateForm()">
         <div class="form-group">
             <label for="inputTopicTitle">Yazı Başlığı</label>
             <div class="tt-value-wrapper">
-                <input type="text" name="name" class="form-control" id="inputTopicTitle" placeholder="Konusu">
+                <input type="text" name="title" class="form-control" id="inputTopicTitle" placeholder="Konusu">
                 <span class="tt-value-input">99</span>
             </div>
             <div class="tt-note">Konunuzu iyi anlatın ama konuyu mümkün olduğunca kısa tutun.</div>
         </div>
-        <div class="form-group">
+       @*  <div class="form-group">
             <label>Yazı Tipi</label>
             <div class="tt-js-active-btn tt-wrapper-btnicon">
                 <div class="row tt-w410-col-02">
@@ -45,7 +45,7 @@
                             <span class="tt-text">Anket</span>
                         </a>
                     </div>
-@*                     <div class="col-4 col-lg-3 col-xl-2">
+                    <div class="col-4 col-lg-3 col-xl-2">
                         <a href="#" class="tt-button-icon">
                             <span class="tt-icon">
                                 <svg>
@@ -64,7 +64,7 @@
                             </span>
                             <span class="tt-text">Video</span>
                         </a>
-                    </div> *@
+                    </div>
                     <div class="col-4 col-lg-3 col-xl-2">
                         <a href="#" class="tt-button-icon">
                             <span class="tt-icon">
@@ -77,7 +77,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> *@
         <div class="pt-editor">
             <h6 class="pt-title">Konu Açıklaması</h6>
             <div class="pt-row">
@@ -179,27 +179,46 @@
                 </div>
             </div>
             <div class="form-group">
-                <textarea name="message" class="form-control" rows="5" placeholder="Yazmaya başla."></textarea>
+                <textarea name="content" class="form-control" rows="5" placeholder="Yazmaya başla." id="contenttext"></textarea>
             </div>
             <div class="row">
                 <div class="col-md-4">
                     @await Component.InvokeAsync("CategoryDropDown")
                 </div>
-                <div class="col-md-8">
+                @* <div class="col-md-8">
                     <div class="form-group">
                         <label for="inputTopicTags">Etiketler( 5 taneden fazla eklemeyiniz.)</label>
                         <input type="text" name="name" class="form-control" id="inputTopicTags" placeholder="Etiketleri ayırmak için virgül kullanın">
                     </div>
-                </div>
+                </div> *@
             </div>
             <div class="row">
                 <div class="col-auto ml-md-auto">
-                    <a href="#" class="btn btn-secondary btn-width-lg">Konu Oluştur</a>
+                    <button class="btn btn-secondary btn-width-lg">Konu Oluştur</button>
                 </div>
             </div>
         </div>
     </form>
 </div>
 <script>
+  function validateForm() {
+  const title = document.getElementById("inputTopicTitle").value.trim();
+      const content = document.getElementById("contenttext").value.trim();
+          if (title.length < 5) {
+    toastr.error("Başlık en az 5 karakter olmalıdır.", "Hata");
+    return false;
+  }
 
+      if (content.length < 10) { 
+    toastr.error("Konu en az 10 karakter olmalıdır.", "Hata");
+    return false;
+  }
+    const categoryElement = document.getElementById("categoryId");
+    if (!categoryElement || categoryElement.value === "0") {
+      toastr.error("Lütfen bir kategori seçiniz.", "Hata");
+      return false;
+    }
+
+      return true;
+}
 </script>

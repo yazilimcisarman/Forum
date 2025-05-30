@@ -26,5 +26,13 @@ namespace Forum.Persistence.Repositories
                 .ToListAsync();
             return result;
         }
+
+        public Task<List<Comment>> GetUserComments(string userId)
+        {
+            var result = _context.Comments.Where(c => c.User.UserIdentityId == userId).Include(c => c.User).Include(x => x.SubComments).ThenInclude(x => x.User)
+                //.AsNoTracking()
+                .ToListAsync();
+            return result;
+        }
     }
 }

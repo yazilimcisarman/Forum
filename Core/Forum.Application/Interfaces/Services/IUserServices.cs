@@ -19,5 +19,6 @@ namespace Forum.Application.Interfaces.Services
         Task<ApiResponse<object>> DeleteUser(int id);
         Task<ApiResponse<List<BestUsersTakeThreeDto>>> GetBestUsersTakeThree();
         //Task<ApiResponse<object>> CheckUser(LoginDto dto);
+        Task<ApiResponse<GetByIdUserDto>> GetByUserIdentityId(string userIdentityId);
     }
 }

@@ -1,6 +1,7 @@
 ﻿using Forum.Application.Dtos.PostDtos;
 using Forum.Application.Dtos.SubCommentDtos;
 using Forum.Domain.Entities;
+using Humanizer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Forum.Application.Dtos.CommentDtos
         public int Id { get; set; }
         public string Content { get; set; } // Yorum içeriği
         public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public string CreatedAtHumanize => CreatedAt.Humanize();
         public int UserId { get; set; }
         public int PostId { get; set; } // Bağlı olduğu post
 

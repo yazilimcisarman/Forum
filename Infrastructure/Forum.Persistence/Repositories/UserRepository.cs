@@ -28,5 +28,13 @@ namespace Forum.Persistence.Repositories
                 .ToListAsync();
             return result;
         }
+
+        public Task<User> GetUserByIdentityId(string identityid)
+        {
+            var result  = _dbContext.Users
+                .Where(x => x.UserIdentityId == identityid)
+                .FirstOrDefaultAsync();
+            return result;
+        }
     }
 }

@@ -10,5 +10,6 @@ namespace Forum.Application.Interfaces.Repositories
     public interface IUserRepository
     {
         Task<List<User>> GetBestUsersTakeThree();
+        Task<User> GetUserByIdentityId(string identityid);
     }
 }

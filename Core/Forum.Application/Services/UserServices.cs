@@ -156,6 +156,25 @@ namespace Forum.Application.Services
             }
         }
 
+        public async Task<ApiResponse<GetByIdUserDto>> GetByUserIdentityId(string userIdentityId)
+        {
+            try
+            {
+                var user = await _userRepositoryCustom.GetUserByIdentityId(userIdentityId);
+                if (user == null)
+                {
+                    return new ApiResponse<GetByIdUserDto> { Status = true, Data = null, Info = "Kullanıcı Bulunamadı." };
+                }
+                var result = _mapper.Map<GetByIdUserDto>(user);
+
+                return new ApiResponse<GetByIdUserDto> { Status = true, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<GetByIdUserDto> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
+        }
+
         //public async Task<ApiResponse<object>> CheckUser(LoginDto dto)
         //{
         //    try

@@ -152,9 +152,27 @@ namespace Forum.Application.Services
             }
         }
 
-        public Task<ApiResponse<List<ResultCommentDto>>> GetUserComments(string userId)
+        public async Task<ApiResponse<List<ResultCommentDto>>> GetUserComments(string userId)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var comments = await _commentRepository2.GetUserComments(userId);
+                if (comments.Count == 0 || comments == null)
+                {
+                    return new ApiResponse<List<ResultCommentDto>> { Status = true, Data = null, Info = "Yorum Yok." };
+                }
+                //var posts = await _postRepository.GetAllAsync();
+                //var users = await _userRepository.GetAllAsync();
+                //var category = await _categoryRepository.GetAllAsync();
+                //var poststatus = await _postStatusRepository.GetAllAsync();
+
+                var result = _mapper.Map<List<ResultCommentDto>>(comments);
+                return new ApiResponse<List<ResultCommentDto>> { Status = true, Data = result };
+            }
+            catch (Exception ex)
+            {
+                return new ApiResponse<List<ResultCommentDto>> { Status = false, Data = null, ErrorMessage = ex.Message };
+            }
         }
 
         public async Task<ApiResponse<object>> UpdateComment(UpdateCommentDto Comment)

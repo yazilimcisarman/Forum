@@ -10,6 +10,9 @@
 	<meta name="format-detection" content="telephone=no">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" href="~/forum/css/style.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="..." crossorigin="anonymous">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
+
 </head>
 <body>
 	<!-- tt-mobile menu -->
@@ -48,8 +51,11 @@
 						<nav>
 							<ul>
 								<li><a href="/category"><span>Kategoriler</span></a></li>
-								<li><a href="/trend"><span>Trendler</span></a></li>
+								<li><a href="/trend"><span>Hakkımızda</span></a></li>
+								@if (User.Identity.IsAuthenticated)
+								{ 
 								<li><a href="/topic/create"><span>Ekle</span></a></li>
+								}
 								<li>
 									<a href="page-single-user.html"><span>Sayfalar</span></a>
 									<ul>
@@ -125,7 +131,7 @@
 						@if (User.Identity.IsAuthenticated)
 						{
 							<a href="/profile" class="btn btn-primary">Profil</a>
-
+							<a href="/account/logout" class="btn btn-secondary">Çıkış</a>
 						}
 						else
 						{
@@ -558,6 +564,33 @@
 		<symbol xmlns="http://www.w3.org/2000/svg" viewbox="0 0 111 111" id="circle_green" >
 			<path d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2Z" fill="#28a745" />
 		</symbol>
+		<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+
+			<!-- Soru İşareti: Orijinalin Aynısı -->
+			<symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111 111" id="Question">
+				<path d="M5.5 1.5c-2.2 0-4 1.8-4 4v82c0 2.2 1.8 4 4 4H70c2.2 0 4.81 1.61 5.81 3.57l5.38 10.61c.99 1.96 2.62 1.96 3.62 0l5.38-10.61c.99-1.96 3.61-3.57 5.81-3.57h9.5c2.2 0 4-1.8 4-4v-82c0-2.2-1.8-4-4-4H5.5z" fill="#fff" />
+				<path d="M83 108.65c-1.26 0-2.41-.84-3.15-2.29l-5.38-10.61C73.73 94.28 71.64 93 70 93H5.5A5.51 5.51 0 0 1 0 87.5v-82C0 2.47 2.47 0 5.5 0h100c3.03 0 5.5 2.47 5.5 5.5v82c0 3.03-2.47 5.5-5.5 5.5H96c-1.64 0-3.73 1.28-4.47 2.75l-5.38 10.62c-.74 1.45-1.89 2.28-3.15 2.28z" fill="#b9c2c6" />
+				<path d="M101 111H66c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5h35c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5zm-44 0H29c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5h28c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5z" fill="#b9c2c6" />
+				<path d="M52.36 54.22c0-1.36.25-2.59.74-3.69s1.09-2.04 1.79-2.84c.7-.79 1.64-1.74 2.81-2.84 1.44-1.32 2.5-2.47 3.21-3.43.7-.96 1.05-2.09 1.05-3.38 0-3.52-1.83-5.28-5.5-5.28-1.82 0-3.18.53-4.09 1.59-.91 1.06-1.53 2.5-1.87 4.31l-6.01-1.65c.3-2.72 1.56-4.95 3.77-6.69 2.21-1.74 5.04-2.61 8.48-2.61 3.52 0 6.4.91 8.65 2.72s3.38 4.31 3.38 7.49c0 1.66-.27 3.08-.79 4.25-.53 1.17-1.16 2.14-1.9 2.89-.74.76-1.73 1.63-2.98 2.61-1.59 1.21-2.77 2.33-3.55 3.35-.78 1.02-1.16 2.35-1.16 3.97v1.08h-6.01v-1.85zm-1.02 10.16v-.74c0-2.53 1.27-3.8 3.8-3.8h.68c2.53 0 3.8 1.27 3.8 3.8v.74c0 2.53-1.27 3.8-3.8 3.8h-.68c-2.54 0-3.8-1.27-3.8-3.8z" fill="#b9c2c6" />
+			</symbol>
+
+			<!-- Örnek: Düzenle -->
+			<symbol id="icon-edit" viewBox="0 0 111 111">
+				<path d="M90.7 20.3l-9.9-9.9c-2-2-5.1-2-7.1 0l-49 49c-.5.5-.9 1.1-1.1 1.8l-4.9 17.6c-.5 1.8 1.1 3.4 2.9 2.9l17.6-4.9c.7-.2 1.3-.6 1.8-1.1l49-49c2-2 2-5.1 0-7.1zM38.7 68.3L78.3 28.7l4 4L42.7 72.3l-4 1.1 1.1-4.1z" fill="#28a745" />
+			</symbol>
+
+			<!-- Örnek: Sil -->
+			<symbol id="icon-trash" viewBox="0 0 111 111">
+				<path d="M34 18h43l3 6h20v6H14v-6h20l3-6zm3 15h35l-2 57H39l-2-57zm7 6v45h6V39h-6zm14 0v45h6V39h-6z" fill="#dc3545" />
+			</symbol>
+
+			<!-- Örnek: Göz -->
+			<symbol id="icon-eye" viewBox="0 0 111 111">
+				<path d="M55.5 30C30 30 12 55.5 12 55.5S30 81 55.5 81 99 55.5 99 55.5 81 30 55.5 30zm0 42c-9.9 0-18-8.1-18-18s8.1-18 18-18 18 8.1 18 18-8.1 18-18 18zm0-27a9 9 0 1 0 0 18 9 9 0 0 0 0-18z" fill="#17a2b8" />
+			</symbol>
+
+		</svg>
+
 	</svg>
 </body>
 </html>
