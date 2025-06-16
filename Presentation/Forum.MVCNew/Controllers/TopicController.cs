@@ -72,5 +72,57 @@ namespace Forum.MVCNew.Controllers
 
             return ipAddress ?? "Unknown";
         }
+
+        [Authorize]
+        public async Task<IActionResult> Edit(int topicId)
+        {
+            var user = await _accountServices.GetUserByUserName(User.Identity.Name);
+            var userId = await _userServices.GetByUserIdentityId(user.Data.Id);
+
+            var result = await _postServices.GetPostById(topicId);
+            if (result.Data.User.UserIdentityId != userId.Data.UserIdentityId)
+            {
+                return RedirectToAction("404","Error");
+            }
+            return View(result.Data);
+        }
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> UpdatePost(UpdatePostDto dto)
+        {
+            //en son burada kullanici id y ialamiyorduk onu ayarla
+            //var userIdentifier = GetUserIdentifier();
+            var user = await _accountServices.GetUserByUserName(User.Identity.Name);
+            var userId = await _userServices.GetByUserIdentityId(user.Data.Id);
+            //dto.UserId = userIdentifier; // Kullanıcı kimliğini ayarla
+            dto.UserId = userId.Data.Id;
+            var result = await _postServices.UpdatePost(dto);
+            if (result.Status)
+            {
+                return RedirectToAction("Index","Profile");
+            }
+            return View(dto);
+        }
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var user = await _accountServices.GetUserByUserName(User.Identity.Name);
+            var userId = await _userServices.GetByUserIdentityId(user.Data.Id);
+
+            var result = await _postServices.GetPostById(id);
+            if (result.Data.User.UserIdentityId != userId.Data.UserIdentityId)
+            {
+                return RedirectToAction("404", "Error");
+            }
+            var resultDelete = await _postServices.DeletePost(id);
+            if (resultDelete.Status)
+            {
+
+                return RedirectToAction("Index", "Profile");
+                }
+            return RedirectToAction("500", "Error");
+
+        }
     }
 }

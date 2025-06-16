@@ -1,0 +1,229 @@
+﻿@using Forum.Application.Dtos.PostDtos
+
+@model GetByIdPostDto
+<div class="tt-wrapper-inner">
+    <h1 class="tt-title-border">
+       Konu Düzenle
+    </h1>
+    <form class="form-default form-create-topic" method="post" action="/topic/UpdatePost" onsubmit="return validateForm()">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <input type="hidden" name="StatusId" value="@Model.StatusId" />
+        <div class="form-group">
+            <label for="inputTopicTitle">Yazı Başlığı</label>
+            <div class="tt-value-wrapper">
+                <input type="text" name="title" class="form-control" id="inputTopicTitle" placeholder="Konusu" value="@Model.Title">
+                <span class="tt-value-input">99</span>
+            </div>
+            <div class="tt-note">Konunuzu iyi anlatın ama konuyu mümkün olduğunca kısa tutun.</div>
+        </div>
+       @*  <div class="form-group">
+            <label>Yazı Tipi</label>
+            <div class="tt-js-active-btn tt-wrapper-btnicon">
+                <div class="row tt-w410-col-02">
+                    <div class="col-4 col-lg-3 col-xl-2">
+                        <a href="#" class="tt-button-icon">
+                            <span class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#icon-discussion"></use>
+                                </svg>
+                            </span>
+                            <span class="tt-text">Tartışma</span>
+                        </a>
+                    </div>
+                    <div class="col-4 col-lg-3 col-xl-2">
+                        <a href="#" class="tt-button-icon">
+                            <span class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#Question"></use>
+                                </svg>
+                            </span>
+                            <span class="tt-text">Soru</span>
+                        </a>
+                    </div>
+                    <div class="col-4 col-lg-3 col-xl-2">
+                        <a href="#" class="tt-button-icon">
+                            <span class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#Poll"></use>
+                                </svg>
+                            </span>
+                            <span class="tt-text">Anket</span>
+                        </a>
+                    </div>
+                    <div class="col-4 col-lg-3 col-xl-2">
+                        <a href="#" class="tt-button-icon">
+                            <span class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#icon-gallery"></use>
+                                </svg>
+                            </span>
+                            <span class="tt-text">Gallery</span>
+                        </a>
+                    </div>
+                    <div class="col-4 col-lg-3 col-xl-2">
+                        <a href="#" class="tt-button-icon">
+                            <span class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#Video"></use>
+                                </svg>
+                            </span>
+                            <span class="tt-text">Video</span>
+                        </a>
+                    </div>
+                    <div class="col-4 col-lg-3 col-xl-2">
+                        <a href="#" class="tt-button-icon">
+                            <span class="tt-icon">
+                                <svg>
+                                    <use xlink:href="#Others"></use>
+                                </svg>
+                            </span>
+                            <span class="tt-text">Diğer</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div> *@
+        <div class="pt-editor">
+            <h6 class="pt-title">Konu Açıklaması</h6>
+            <div class="pt-row">
+                <div class="col-left">
+                   @*  <ul class="pt-edit-btn">
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-quote"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-bold"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-italic"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-share_topic"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-blockquote"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-performatted"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li class="hr"></li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-upload_files"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-bullet_list"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-heading"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-horizontal_line"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-emoticon"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-settings"></use>
+                                </svg>
+                            </button>
+                        </li>
+                        <li>
+                            <button type="button" class="btn-icon">
+                                <svg class="tt-icon">
+                                    <use xlink:href="#icon-color_picker"></use>
+                                </svg>
+                            </button>
+                        </li>
+                    </ul> *@
+                </div>
+            </div>
+            <div class="form-group">
+                <textarea name="content" class="form-control" rows="5" placeholder="Yazmaya başla." id="contenttext">@Model.Content</textarea>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    @await Component.InvokeAsync("CategoryDropDown", new { selectedCategoryId = Model.CategoryId })
+                </div>
+                @* <div class="col-md-8">
+                    <div class="form-group">
+                        <label for="inputTopicTags">Etiketler( 5 taneden fazla eklemeyiniz.)</label>
+                        <input type="text" name="name" class="form-control" id="inputTopicTags" placeholder="Etiketleri ayırmak için virgül kullanın">
+                    </div>
+                </div> *@
+            </div>
+            <div class="row">
+                <div class="col-auto ml-md-auto">
+                    <button class="btn btn-secondary btn-width-lg">Konu Güncelle</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script>
+  function validateForm() {
+  const title = document.getElementById("inputTopicTitle").value.trim();
+      const content = document.getElementById("contenttext").value.trim();
+          if (title.length < 5) {
+    toastr.error("Başlık en az 5 karakter olmalıdır.", "Hata");
+    return false;
+  }
+
+      if (content.length < 10) { 
+    toastr.error("Konu en az 10 karakter olmalıdır.", "Hata");
+    return false;
+  }
+    const categoryElement = document.getElementById("categoryId");
+    if (!categoryElement || categoryElement.value === "0") {
+      toastr.error("Lütfen bir kategori seçiniz.", "Hata");
+      return false;
+    }
+
+      return true;
+}
+</script>

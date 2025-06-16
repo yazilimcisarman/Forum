@@ -17,7 +17,7 @@ namespace Forum.Application.Validators.UserValidators
 
             RuleFor(x => x.Username)
                 .NotEmpty().WithMessage("Kullanıcı adı boş olamaz.")
-                .MinimumLength(3).WithMessage("Kullanıcı adı en az 3 karakter olmalıdır.")
+                .MinimumLength(4).WithMessage("Kullanıcı adı en az 4 karakter olmalıdır.")
                 .MaximumLength(20).WithMessage("Kullanıcı adı en fazla 20 karakter olabilir.");
 
             RuleFor(x => x.ProfilePictureUrl)

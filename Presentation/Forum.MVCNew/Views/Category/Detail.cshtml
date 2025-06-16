@@ -119,7 +119,7 @@
                 <div class="row align-items-center no-gutters">
                     <div class="col-11">
                         <ul class="tt-list-badge">
-                            <li class="show-mobile"><a href="#"><span class="tt-color01 tt-badge">@Model.Name</span></a></li>
+                            <li class="show-mobile"><a href="#"><span class="tt-color01 tt-badge">@Model.Name.ToLower()</span></a></li>
                             <li><a href="#"><span class="tt-badge">videohive</span></a></li>
                             <li><a href="#"><span class="tt-badge">photodune</span></a></li>
                         </ul>
@@ -129,7 +129,7 @@
                     </div>
                 </div>
             </div>
-            <div class="tt-col-category"><span class="tt-color01 tt-badge">@Model.Name</span></div>
+            <div class="tt-col-category"><span class="tt-color01 tt-badge">@Model.Name.ToLower()</span></div>
             <div class="tt-col-value  hide-mobile">308</div>
             <div class="tt-col-value tt-color-select  hide-mobile">660</div>
             <div class="tt-col-value  hide-mobile">8.3k</div>

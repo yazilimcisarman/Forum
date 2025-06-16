@@ -43,5 +43,15 @@ namespace Forum.MVCNew.Controllers
             var result = await _accountServices.LogOut();
             return RedirectToAction("Index", "Home");
         }
+        [HttpPost]
+        public async Task<IActionResult> SendRegister(RegisterDto dto)
+        {
+            var result = await _accountServices.CreateUser(dto);
+            if (result.Status)
+            {
+                return RedirectToAction("Index","Home");
+            }
+            return RedirectToAction("Register");
+        }
     }
 }

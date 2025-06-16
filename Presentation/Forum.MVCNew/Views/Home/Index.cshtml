@@ -8,12 +8,12 @@
 <div class="tt-topic-list">
     @await Component.InvokeAsync("TableTitle")
 
-   @*  <div class="tt-topic-alert tt-alert-default" role="alert">
+    @*  <div class="tt-topic-alert tt-alert-default" role="alert">
         <a href="#" target="_blank">4 yeni yazı</a>son zamanlarda eklendi, onları yüklemek için buraya tıklayın.
     </div> *@
-   
 
-@*     <div class="tt-item tt-itemselect">
+
+    @*     <div class="tt-item tt-itemselect">
         <div class="tt-col-avatar">
             <svg class="tt-icon">
                 <use xlink:href="#icon-ava-k"></use>
@@ -82,23 +82,27 @@
         </div>
 
     }
-    <div class="tt-item tt-item-popup">
-        <div class="tt-col-avatar">
-            <svg class="tt-icon">
-                <use xlink:href="#icon-ava-s"></use>
-            </svg>
-        </div>
-        <div class="tt-col-message">Burada yeni olduğunuz gibi görünüyor. Ücretsiz kayıt ol ve katkıda bulun.</div>
-        <div class="tt-col-btn">
-            <button type="button" class="btn btn-primary">Giriş</button>
-            <button type="button" class="btn btn-secondary">Kayıt</button>
-            <button type="button" class="btn-icon">
-               @*  <svg class="tt-icon">
+    @if(User.Identity.Name == null)
+    {
+        <div class="tt-item tt-item-popup">
+            <div class="tt-col-avatar">
+                <svg class="tt-icon">
+                    <use xlink:href="#icon-ava-s"></use>
+                </svg>
+            </div>
+            <div class="tt-col-message">Burada yeni olduğunuz gibi görünüyor. Ücretsiz kayıt ol ve katkıda bulun.</div>
+            <div class="tt-col-btn">
+                <button type="button" class="btn btn-primary">Giriş</button>
+                <button type="button" class="btn btn-secondary">Kayıt</button>
+                <button type="button" class="btn-icon">
+                    @*  <svg class="tt-icon">
                     <use xlink:href="#icon-cancel"></use>
                 </svg> *@
-            </button>
+                </button>
+            </div>
         </div>
-    </div>
+    }
+    
     <div class="tt-row-btn">
         <button type="button" class="btn-icon js-topiclist-showmore" onclick="alert('yapma');">
             <svg class="tt-icon">

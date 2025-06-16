@@ -43,7 +43,7 @@
         <div class="tt-list-header">
             <div class="tt-col-topic">Konu</div>
             <div class="tt-col-value-large hide-mobile">Kategori</div>
-            <div class="tt-col-value-large hide-mobile">Durum</div>
+            @* <div class="tt-col-value-large hide-mobile">Durum</div> *@
             <div class="tt-col-value-large hide-mobile">###</div>
             <div class="tt-col-value-large hide-mobile">###</div>
         </div>
@@ -69,7 +69,7 @@
                         <div class="row align-items-center no-gutters hide-desktope">
                             <div class="col-6">
                                 <ul class="tt-list-badge">
-                                    <li class="show-mobile"><a href="#"><span class="tt-color05 tt-badge">@item.Category.Name.ToLower()</span></a></li>
+                                    <li class="show-mobile"><a href="#"><span class="@($"tt-color{item.Category.ColorId} tt-badge")">@item.Category.Name.ToLower()</span></a></li>
                                 </ul>
 
                             </div>
@@ -81,8 +81,8 @@
                                     </button>
                                     <div class="dropdown-menu-custom">
                                         <a href="/topic/edit/@item.Id"><i class="fas fa-edit"></i> Düzenle</a>
-                                        <a href="/topic/delete/@item.Id"><i class="fas fa-trash-alt"></i> Sil</a>
-                                        <a href="/topic/toggle-visibility/@item.Id"><i class="fas fa-eye-slash"></i> Gizle/Göster</a>
+                                        <a href="/topic/delete?id=@item.Id"><i class="fas fa-trash-alt"></i> Sil</a>
+                                        @* <a href="/topic/toggle-visibility/@item.Id"><i class="fas fa-eye-slash"></i> Gizle/Göster</a> *@
                                     </div>
                                 </div>
                             </div>
@@ -91,10 +91,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="tt-col-category tt-col-value-large hide-mobile"><span class="tt-color05 tt-badge">@item.Category.Name.ToLower()</span></div>
-                    <div class="tt-col-value-large hide-mobile">
+                    <div class="tt-col-category tt-col-value-large hide-mobile"><span class="@($"tt-color{item.Category.ColorId} tt-badge")">@item.Category.Name.ToLower()</span></div>
+                   @*  <div class="tt-col-value-large hide-mobile">
                         <a href="/topic/toggle-visibility/@item.Id" style="margin-left:20px"><i class="fas fa-eye-slash" style="color:red"></i></a>
-                    </div>
+                    </div> *@
                     <div class="tt-col-value-large hide-mobile">@item.CreatedAtHumanize</div>
                     <div class="tt-col-value-large hide-mobile">
                         <div class="dropdown-custom">
@@ -102,9 +102,9 @@
                                 <i class="fas fa-ellipsis-v"></i>
                             </button>
                             <div class="dropdown-menu-custom">
-                                <a href="/topic/edit/@item.Id"><i class="fas fa-edit"></i> Düzenle</a>
-                                <a href="/topic/delete/@item.Id"><i class="fas fa-trash-alt"></i> Sil</a>
-                                <a href="/topic/toggle-visibility/@item.Id"><i class="fas fa-eye-slash"></i> Gizle/Göster</a>
+                                <a href="/topic/edit?topicId=@item.Id"><i class="fas fa-edit"></i> Düzenle</a>
+                                <a href="/topic/delete?id=@item.Id"><i class="fas fa-trash-alt"></i> Sil</a>
+                                @* <a href="/topic/toggle-visibility/@item.Id"><i class="fas fa-eye-slash"></i> Gizle/Göster</a> *@
                             </div>
                         </div>
                     </div>

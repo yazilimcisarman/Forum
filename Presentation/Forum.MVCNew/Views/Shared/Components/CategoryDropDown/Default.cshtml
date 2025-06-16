@@ -1,13 +1,15 @@
 ﻿@using Forum.Application.Dtos.CategoryDtos
-@model List<ResultCategoryDto>
+@model CategoryDropDownViewModel
 
 <div class="form-group">
     <label for="inputTopicTitle">Kategori</label>
     <select class="form-control" name="categoryId" id="categoryId">
         <option value="0">Kategori Seçiniz</option>
-        @foreach (var item in Model)
+        @foreach (var item in Model.Categories)
         {
-            <option value="@item.Id">@item.Name</option>
+            <option value="@item.Id" selected="@(item.Id == Model.SelectedCategoryId)">
+                @item.Name
+            </option>
         }
     </select>
 </div>

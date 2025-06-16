@@ -45,21 +45,21 @@
                             Topluluğun gerçek gücünü keşfetmek için foruma katıl.
                         </div>
                     </a>
-                    <form class="form-default">
+                    <form class="form-default" method="post" action="/account/sendregister">
                         <div class="form-group">
                             <label for="loginUserName">Kullanıcı Adı</label>
                             <input type="text" name="name" class="form-control" id="loginUserName" placeholder="azyrusmax">
                         </div>
                         <div class="form-group">
                             <label for="loginUserEmail">E-posta</label>
-                            <input type="text" name="name" class="form-control" id="loginUserEmail" placeholder="ornek@ornek.com">
+                            <input type="email" name="name" class="form-control" id="loginUserEmail" placeholder="ornek@ornek.com">
                         </div>
                         <div class="form-group">
                             <label for="loginUserPassword">Şifre</label>
                             <input type="password" name="name" class="form-control" id="loginUserPassword" placeholder="************">
                         </div>
                         <div class="form-group">
-                            <a href="#" class="btn btn-secondary btn-block">Hesabımı Oluştur</a>
+                            <button type="submit" class="btn btn-secondary btn-block">Hesabımı Oluştur</button>
                         </div>
                         @* <p>Ya da sosyal medya ile kayıt ol</p> *@
                         <div class="row">
